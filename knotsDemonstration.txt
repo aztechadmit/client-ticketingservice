@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+
+<header>
+<!--<h style="display:block; margin:auto; top:50%;"> Ticketing Portal </h>-->
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Knotts_Berry_Farm_Logo.svg/1200px-Knotts_Berry_Farm_Logo.svg.png" style="margin-top:5px;height:60px; width:123.3px;"/>
+
+</header>
+
+<div style="max-width: 800px; margin:auto;">
+<br><br><br><br>
+<head>
+
+<div style="background-color:purple; color:white; margin:20px; padding:10px; border: 2px solid black; border-radius:5px;">
+<h2 style="text-align:center;">Knott's Not Ticketing Portal</h2>
+<p style="text-align:center; font-size:17px;">This form will determine the price of your admission based on date and type of ticket.</p>
+<p style="text-align:center" id="info1"></p>
+
+<br>
+</div>
+</head>
+
+<script> // VARIABLES
+
+	// Client determined variables
+	const tickets = ["Standard", "Deluxe", "Member"];
+    const tier1Date = ["2023-03-14", "2023-03-15", "2023-03-16"];
+    const tier2Date = ["2023-04-01", "2023-04-02", "2023-04-03"];
+    const standardPrice = [100, 200, 100];
+    const deluxePrice = [250, 350, 150];
+    const memberPrice = [60, 70, 30];
+    
+    const maxDate = "2023-04-21";
+    
+    //user inputed / altered variables
+    var userDateInput = 0;
+   	var userTicketType ="nan";
+    var tierSelected;
+    var totalPrice; 
+    
+</script>
+
+
+
+<style> /* S T Y L E A T T R I B U T E S */
+	.nextButton {
+    	height:70px;
+        width:50%;
+        color:white;
+        background-color:purple;
+        border-radius:5px;
+        margin:auto;
+        transition-duration: 0.4s;
+        text-align:Center;
+        font-size:18px;
+        position: relative;
+    }
+    .nextButton:hover {
+    	height:65px;
+        width:52%;
+        background-color:blue;
+    }
+    .input {
+    	height:50px;
+        width:50%;
+        font-size:18px;
+        margin-bottom:10px;
+    }
+    .tikTypeButton {
+    	height:50px;
+        width:90px;
+        background-color:purple;
+        color:white;
+        margin-left:0;
+        margin-bottom:5px;
+        margin-top:5px;
+        margin-right:0;
+        transition-duration:0.4s;
+    }
+    .tikTypeButton:hover {
+    	height:52px;
+        width:88px;
+        background-color:blue;
+        
+    }
+    header {
+    	position:fixed;
+        padding:0;
+        margin:0;
+        top:0;
+        height:75px;
+        background:#efefef;
+        color:white;
+        text-align:center;
+        text-align-vertical:center;
+        font-size:25px;
+        width:100%;
+        right:0;
+    }
+</style>
+
+
+
+<script> // F U N C T I O N S
+	function setMinMaxDate() { 
+    // Get todays date and format it so we can use it as the minimum date for the date picker
+    	
+        const today = new Date();
+        const day = String(today.getDate()).padStart(2, '0'); //get day in two digits
+        const month = String(today.getMonth()+1).padStart(2, '0'); //get month in two digits
+        const year = today.getFullYear();
+        
+        minDate = year+"-"+month+"-"+day;
+        
+        document.getElementById("info1").innerHTML = "Begin by selecting a date on or after "+minDate;
+
+    }//end of function set todays date
+    
+   	setMinMaxDate();
+    
+	function determinePrice() {
+    	
+        userDateInput=document.getElementById("dateInput").value;
+        
+		if(userDateInput == 0 || userTicketType == "nan")//missing user inputs
+        {
+        	document.getElementById("PriceDisplay").innerHTML = "Missing an input!";
+        }
+        else
+        {
+        	
+        	if(tier1Date.includes(userDateInput)){tierSelected=1;}
+            else if(tier2Date.includes(userDateInput)) {tierSelected=2;}
+            else{tierSelected=3;}
+            
+            document.getElementById("PriceDisplay").innerHTML = "Tier Selected: "+tierSelected;
+            
+            switch(userTicketType) {
+            	
+                case "Standard":
+                	totalPrice = standardPrice[tierSelected-1];
+                	break;
+                case "Deluxe":
+                	totalPrice = deluxePrice[tierSelected-1];
+               		break;
+                case "Member":
+                	totalPrice = memberPrice[tierSelected-1];
+                	break;
+            }
+            
+        
+        	document.getElementById("PriceDisplay").innerHTML += "<br>Ticket Price: <b>$"+totalPrice+"</b>";
+        
+        
+        }//end of if statememnt checking for user input
+        
+        
+    }//end of function determinePrice
+</script>
+
+
+
+<body> <!-- -------------------------------------------------------------------- -->
+
+<div style="background-color:#efefef; margin:20px; padding:10px; border: 2px solid black; border-radius:5px;text-align:center;">
+
+<br>
+<label for="dateInput">Please Enter the Date of Your Visit</label><br>
+<input type="date" class="input" id="dateInput" onclick="showPicker();"><br><br>
+<script>document.getElementById("dateInput").min = minDate;
+document.getElementById("dateInput").max = maxDate;</script> <!--set min value of date-->
+
+<label>Select Your Desired Ticket Type</label><br>
+<button class="tikTypeButton" onClick="tikTypeSt();">Standard</button>
+<button class="tikTypeButton" onClick="tikTypeDe();">Deluxe</button>
+<button class="tikTypeButton" onClick="tikTypeMe();">Member</button>
+<br>
+<p id="tikTypeDisp1"><br></p>
+<br>
+
+<script> // SET ADMISSION TYPE
+	function tikTypeSt() {userTicketType=tickets[0];dispTikTypeSe();}
+    function tikTypeDe() {userTicketType=tickets[1];dispTikTypeSe();}
+    function tikTypeMe() {userTicketType=tickets[2];dispTikTypeSe();}
+	function dispTikTypeSe() {
+    document.getElementById("tikTypeDisp1").innerHTML = "Ticket Type: "+userTicketType+" Admission";}
+</script>
+
+<br>
+<button class="nextButton" onClick="return determinePrice();">
+Determine Ticket Price</button>
+<br><br>
+
+</div> <!-- end of centering div -->
+
+<div style="background-color:purple; color:white; margin:20px; padding:10px; border: 2px solid black; border-radius:5px; text-align:center;">
+
+<p id="PriceDisplay" style="font-size:20px; line-height:30px;"><br></p>
+
+</div>
+
+</body>
+</div>
+</html>
