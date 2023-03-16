@@ -54,8 +54,8 @@ body {
 }
 
 .textInput { /* class="textInput"*/
-  width=90%;
-  height=50px;
+  width:90%;
+  height:50px;
   background:white;
   color:black;
   cursor:pointer;
