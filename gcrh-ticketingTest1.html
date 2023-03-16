@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html>
+
+<head> <!-- --------------------------------------------------------- METADATA -->
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script> // DEVELOPER INPUT
+
+//BASIC INPUT
+const amountTax = 0; //1.9 = total + 9% percentage
+const amountFees = 1; // in dollars
+const multidayDiscountAmount = 5; //$ per day
+
+// T I C K E T  T I E R S
+// note, dates are written in the format YYYY-MM-DD
+const tier5 = [
+	"2023-01-01", "peep"
+];
+
+const tier4 = [
+	"2023-01-01", "peep"
+];
+
+const tier3 = [
+	"2023-01-01", "peep"
+];
+
+const tier2 = [
+	"2023-01-01", "peep"
+];
+
+const tier1 = [
+	"2023-01-01", "peep"
+];
+
+const daysThatAreWeekdays = [ // weekdays
+	1,2,3,4,5
+];
+const daysThatAreWeekends = [ // weekends
+	0, //sunday
+    6, //saturday
+];
+
+// T I C K E T  P R I C E
+// List items 1 - 5 are adult, 6 - 10 are child
+const onResPricing = [ // ORAS NOU RESIDENT
+	75,		//T1 adult
+    85,
+    99,
+    109,
+    125,	//T5 child
+    
+    60,		//T1 child
+    75,
+    98,
+    109,
+    118		//T5 child
+];
+
+const generalAdmisson = [ // STANDARD ADMISSION
+	85,		//T1 adult
+    99,
+    109,
+    119,
+    129,	//T5 child
+    
+    68,		//T1 child
+    84,
+    99,
+    109,
+    118		//T5 child
+];
+
+const vipBronzeAdmission = [ // VIP BRONZE
+	85,		//T1 adult
+    99,
+    109,
+    119,
+    129,	//T5 child
+    
+    68,		//T1 child
+    84,
+    99,
+    109,
+    118		//T5 child
+];
+
+const vipSilverAdmission = [ // VIP SILVER
+	85,		//T1 adult
+    99,
+    109,
+    119,
+    129,	//T5 adult
+    
+    68,		//T1 child
+    84,
+    99,
+    109,
+    118		//T5 child
+];
+
+const vipGoldAdmission = [ // VIP GOLD
+	85,		//T1 adult
+    99,
+    109,
+    119,
+    129,	//T5 child
+    
+    68,		//T1 child
+    84,
+    99,
+    109,
+    118		//T5 child
+];
+
+const vipDeluxeAdmission = [ // VIP DELUXE
+	85,		//T1 adult
+    99,
+    109,
+    119,
+    129,	//T5 child
+    
+    68,		//T1 child
+    84,
+    99,
+    109,
+    118		//T5 child
+];
+
+
+</script>
+
+
+
+<script>
+	var ticketType = "none";
+    var adultPrice = 0;
+    var childPrice = 0;
+    var orderSubTotal = 0;
+
+</script>
+
+
+
+
+
+<script> //JAVASCRIPT
+
+//NON-USER INPUTED VARIABLES
+var partNumber = 0; //part to show or hide
+var loadSec;
+
+// DEVELOPER INPUTED VARIABLES
+var loadTimer;
+
+const todayDate = new Date();
+todayDate.setDate(todayDate.getDate() + 1);
+
+// USER INPUTED VARIABLES
+var numDay = 1; //Number of Days 
+
+//INITIAL LOADING SYMBOL 
+function initialLoad() {
+		loadTimer = 0; // <------------------------------ startup loading time
+		loadSec = setTimeout(showPart1, loadTimer);
+        //alert("poopy");
+	}
+function showLoading(){
+		document.getElementById("loadingScreen").style.display = "block";
+        loadSec = setTimeout(hideLoading, loadTimer);
+	}
+function hideLoading()
+	{
+    	document.getElementById("loadingScreen").style.display = "none";
+    }
+function showPart1()
+	{
+    	//alert("peepee");
+    	document.getElementById("loadingScreen").style.display = "none";
+        document.getElementById("formPart1").style.display = "block";
+        document.getElementById("formPart2").style.display = "none";
+        document.getElementById("formPart3").style.display = "none";
+        document.getElementById("formPart4").style.display = "none";
+        
+        
+        partNumber = 1;
+        document.getElementById("ticketTypeChosenDisplay1").innerHTML = "";
+        
+    }
+function showPart2()
+	{
+		loadTimer = 1500;
+        
+        document.getElementById("formPart1").style.display = "none";
+        document.getElementById("formPart2").style.display = "block";
+        document.getElementById("formPart3").style.display = "none";
+        document.getElementById("formPart4").style.display = "none";
+        
+        dayPickerButtons();
+        //document.getElementById("next2").disabled=true;
+        
+        showLoading();
+       
+       	partNumber = 2;
+        //initiatePriceChecker();
+        
+	}
+function showPart3()
+	{
+		loadTimer = 500;
+        
+        document.getElementById("formPart1").style.display = "none";
+        document.getElementById("formPart2").style.display = "none";
+        document.getElementById("formPart3").style.display = "block";
+        document.getElementById("formPart4").style.display = "none";
+        
+        showLoading();
+        
+        partNumber = 3;
+        document.getElementById("numberOfGuestsSelected").innerHTML ="";
+        updateNumGuestDisplay();
+        
+	}
+function showPart4()
+	{
+    	loadTimer = 1000; 
+    	document.getElementById("formPart1").style.display = "none";
+        document.getElementById("formPart2").style.display = "none";
+        document.getElementById("formPart3").style.display = "none";
+        document.getElementById("formPart4").style.display = "block";
+        
+        showLoading();
+        
+        partNumber = 4;
+        
+        orderSubTotal = (numAdult*adultPrice*numDay) + (numChild*childPrice*numDay);
+        document.getElementById("orderSummaryDisplay").innerHTML = ticketType+"<br><br>"+numAdult+" Adult at $"+adultPrice+" each<br>"+numChild+" Child at $"+childPrice+" each"+
+        "<br><br>Number of Days: "+numDay+"<br><h4>Order Subtotal: $<b>"+orderSubTotal+"</b></h4>";
+        
+        
+    }
+
+
+</script>
+
+<script> // BACK END
+
+	function dayPickerButtons() { //Disables day picker buttons depending on number of days selected
+    	document.getElementById("1dayInputed").disabled=false;
+        document.getElementById("2dayInputed").disabled=false;
+        document.getElementById("3dayInputed").disabled=false;
+        document.getElementById("4dayInputed").disabled=false;
+        document.getElementById("5dayInputed").disabled=false;
+        
+        initiatePriceChecker();
+        
+        switch(numDay){ 
+        	case 0:
+            alert("error");
+        	case 1:
+            document.getElementById("1dayInputed").disabled=true; break;
+            case 2:
+            document.getElementById("2dayInputed").disabled=true; break;
+            case 3:
+            document.getElementById("3dayInputed").disabled=true; break;
+            case 4:
+            document.getElementById("4dayInputed").disabled=true; break;
+            case 5:
+            document.getElementById("5dayInputed").disabled=true;
+            }
+        if(numDay > 1){
+        	document.getElementById("numDayWarning").style.display="block";
+        }else{document.getElementById("numDayWarning").style.display="none";}
+    
+    }
+
+</script>
+
+<style>
+
+#loader {
+  position: absolute;
+  left: 50%;
+  top: 15%;
+  z-index: 6;
+  width: 120px;
+  height: 120px;
+  margin: -76px 0 0 -76px;
+  border: 16px solid #efefef;
+  border-radius: 50%;
+  border-top: 16px solid #07039D;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+#cover {position: fixed; height: 100%; width: 100%; top:0; left: 0; background: #ffffff; z-index:5;}
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
+}
+@-webkit-keyframes animatebottom {
+  from { bottom:-100px; opacity:0 } 
+  to { bottom:0px; opacity:1 }
+}
+@keyframes animatebottom { 
+  from{ bottom:-100px; opacity:0 } 
+  to{ bottom:0; opacity:1 }
+}
+
+body {font-family: Arial, Helvetica, sans-serif; font-size:17px;}
+* {box-sizing: border-box;}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=number], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+  background-color: #ffffff;
+}
+
+input[type=date], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+  background-color: #ffffff;
+}
+
+
+input[type=submit] {
+  background-color: #07039D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+}
+img {
+	position: relative;
+	cursor: pointer;
+	width: 270px;
+	height: 150px;
+
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+input[type=submit]:disabled, button[disabled] {
+  background-color: #dfdfdf;
+  color: white;
+}
+input[type=button] {
+	border: 2px solid black;
+    border-radius: 4px;
+    background-color: white;
+	color: black;
+	padding: 12px 20px;
+	cursor: pointer;
+    position: relative;
+}
+input[type=button]:hover {
+  background-color: #efefef;
+}
+input[type=button]:disabled, button[disabled] {
+  background-color: #07039D;
+  color: white;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #efefef;
+  padding: 20px;
+}
+
+.input-container input {
+    border: none;
+    box-sizing: border-box;
+    outline: 0;
+    padding: .75rem;
+    position: relative;
+    width: 100%;
+}
+
+</style>
+	
+</head>
+
+<body onload="initialLoad()"> <!-- ---------------------------------- MAIN CODE BODY -->
+
+<!-- SHOW LOADER AND COVER THE SCRIPT -->
+<div id="loadingScreen">
+<div id="loader"></div>
+<div id="cover"></div>
+<h2 style="z-index:10;">Loading Ticketing Portal...</h2>
+</div>
+
+<h3>1 - Admission Type</h3> <!-- PART 1: TYPE OF TICKET ENTRY BY USER -->
+
+<div class="container" id="formPart1">
+		
+        <div style="text-align: center;">
+        
+        <label>General Admission</label><br><br>
+        
+        <button style="margin-bottom: 10px; width:260px; height:150px; background-color: #ffffff; border-width:1px; border-radius:5px;" onClick="return onResSelected();">
+        	<img style="padding:4px 5px; width:200px; height:80px; border-radius:5px;" src="https://drive.google.com/uc?export=view&id=1lo3lWJ26Fr8j5xJecgan1tp_8HSXkqsP"/>
+        	<p style="line-height:2"><b>Oras Nou Resident</b><br>Starting at $75</p>
+        </button>
+        <button style="margin-bottom: 10px; width:260px; height:150px; background-color: #ffffff; border-width:1px; border-radius:5px;" onClick="return GASelected();">
+        	<img style="padding:4px 5px; width:200px; height:80px; border-radius:5px;" src="https://drive.google.com/uc?export=view&id=13Sb6SiVwfqnCgDh5cLuuPdl-qCvKH1j4"/>
+        	<p style="line-height:2"><b>General Admission</b><br>Starting at $85</p>
+        </button>
+            
+                
+        <br><br>
+        <br><label>GC VIP Admission</label><br><br>
+        
+         <button style="margin-bottom: 10px; width:260px; height:150px; background-color: #ffffff; border-width:1px; border-radius:5px;" onClick="return VIPbronzeSelected();">
+        	<img style="padding:4px 5px; width:200px; height:80px; border-radius:5px;" src="https://drive.google.com/uc?export=view&id=1LHLBFa4Zs208gBg81L5PC5kdRHkKz7hR"/>
+        	<p style="line-height:2"><b>VIP Bronze Admission</b><br>Starting at $109</p>
+        </button>
+        <button style="margin-bottom: 10px; width:260px; height:150px; background-color: #ffffff; border-width:1px; border-radius:5px;" onClick="return VIPsilverSelected();">
+        	<img style="padding:4px 5px; width:200px; height:80px; border-radius:5px;" src="https://drive.google.com/uc?export=view&id=18Cu_DI3iIpc90D6G2s-9yUYQn597jmfq"/>
+        	<p style="line-height:2"><b>VIP Silver Admission</b><br>Starting at $140</p>
+        </button>
+        <button style="margin-bottom: 10px; width:260px; height:150px; background-color: #ffffff; border-width:1px; border-radius:5px;" onClick="return VIPgoldSelected();">
+        	<img style="padding:4px 5px; width:200px; height:80px; border-radius:5px;" src="https://drive.google.com/uc?export=view&id=1ihsO-GsgxKl8scRkkK2sjFb9AeIZ5xnL"/>
+        	<p style="line-height:2"><b>VIP Gold Admission</b><br>Starting at $199</p>
+        </button>
+        <button style="margin-bottom: 10px; width:260px; height:150px; background-color: #ffffff; border-width:1px; border-radius:5px;" onClick="return VIPdeluxeSelected();">
+        	<img style="padding:4px 5px; width:200px; height:80px; border-radius:5px;" src="https://drive.google.com/uc?export=view&id=19uSUJ0Tfdwvf7WAL8QbeHpJltlC4rvWm"/>
+        	<p style="line-height:2"><b>VIP Deluxe Admission</b><br>Starting at $299</p>
+        </button>
+      
+        
+       
+       <br><a href="https://sites.google.com/view/gcresorthighland/tickets-and-passes">Learn About VIP Admission</a><br><br>
+        
+    
+    	
+    	<!-- <br><input type="submit" id="next1" value="Next" onClick="return ticketTypeWasSelected();"> -->
+        </div>
+        
+        <script>
+        //ticketType = "none";
+        function onResSelected(){ticketType="Oras Nou Resident Admission"; ticketTypeWasSelected();}
+        function GASelected(){ticketType="General Admission"; ticketTypeWasSelected();}
+        function VIPbronzeSelected(){ticketType="GC VIP Bronze Admission"; ticketTypeWasSelected();}
+        function VIPsilverSelected(){ticketType="GC VIP Silver Admission"; ticketTypeWasSelected();}
+        function VIPgoldSelected(){ticketType="GC VIP Gold Admission"; ticketTypeWasSelected();}
+        function VIPdeluxeSelected(){ticketType="GC VIP Deluxe Admission"; ticketTypeWasSelected();}
+        
+        
+        function ticketTypeWasSelected() {
+        	document.getElementById("ticketTypeChosenDisplay1").innerHTML = ticketType;
+            return showPart2();
+        }
+        
+        </script>
+    
+
+</div> <!-- PART 1 END -->
+
+
+
+<p id="ticketTypeChosenDisplay1"></p>
+
+
+
+<h3>2 - Date of Visit</h3> <!-- PART 2: DATE AND DAYS SELECTION BY USER -->
+
+<div class="container" id="formPart2">
+
+    	<label>Date of First Visit</label>
+        <input type="date" id="userDateInput" name="userDateInput"  onChange="initiatePriceChecker();">
+        <br>
+        <div style = "text-align: center;">
+        <!-- <p>Estimated Price: $<b id="estimatedpricedisplay"></b> per day</p> -->
+        
+        <p id="estimatedpricedisplay"></p>
+        <a href="https://sites.google.com/view/gcresorthighland/backpages/gcap-ticket-tiers">Learn About Ticket Tiers</a>
+        
+        </div><br>
+        
+        <script> //GET THE DATE
+        const today = new Date()
+        let tomorrow =  new Date()
+			tomorrow.setDate(today.getDate())
+        var dateDay = tomorrow.getDate("%2.0f");
+        var dateMonth = tomorrow.getMonth("%2.0f")+1;
+        var dateYear = tomorrow.getFullYear("%2.0f");
+        var tmrDate = dateYear + "-" + dateMonth + "-" + dateDay;
+        document.getElementById("userDateInput").setAttribute("min", tmrDate);
+        //document.write("<b>" + tmrDate +"</b>");
+        </script>
+        
+        <script> // ESTIMATED COST AND ERROR DISPLAY
+        var previousDateInput;
+        var estimatedPrice = 0;
+        
+        function initiatePriceChecker() {
+        	previousDateInput = 0;
+            if(document.getElementById("userDateInput").value != previousDateInput){
+            	previousDateInput = document.getElementById("userDateInput").value;
+                estimatedPrice = (numDay-1)*multidayDiscountAmount;
+                estimatedPrice = 100 - estimatedPrice;
+				document.getElementById("estimatedpricedisplay").innerHTML = "Estimated Price: $<b>"+ estimatedPrice + "</b> per ticket";
+                adultPrice = estimatedPrice;
+            }
+        }
+        
+        function estimatePriceAndDisplay() {
+        	document.getElementById("estimatedpricedisplay").innerHTML = "Estimated Price: $"+estimatedPrice+" per day";
+            
+        }
+        </script>
+      
+        
+        <label>Number of Days</label><br><br>
+        
+        <script> // NUMBER OF DAYS VALIDATOR
+        	function oneDayInput() {numDay = 1;		return dayPickerButtons();}
+            function twoDayInput() {numDay = 2;		return dayPickerButtons();}
+            function threeDayInput() {numDay = 3;	return dayPickerButtons();} 
+            function fourDayInput() {numDay = 4;	return dayPickerButtons();}
+            function fiveDayInput() {numDay = 5;	return dayPickerButtons();}
+        </script>
+        
+        <div style="text-align: center;">
+        <input type="button" id="1dayInputed" value="1" onClick="return oneDayInput();">
+        <input type="button" id="2dayInputed" value="2" onClick="return twoDayInput();">
+        <input type="button" id="3dayInputed" value="3" onClick="return threeDayInput();">
+        <input type="button" id="4dayInputed" value="4" onClick="return fourDayInput();">
+        <input type="button" id="5dayInputed" value="5" onClick="return fiveDayInput();">
+        </div>
+        
+        <p id="numDayWarning" style="text-align:center;font-size: 12px;color:red;">Note: Multi-Day tickets expire <b>60 days</b> after first visit</p><br>
+
+		<script> // DATE SELECTED VALIDATOR
+        function dateInputedCheck(){
+        
+        if (document.getElementById("userDateInput").value.length == 0) {
+        	document.getElementById("estimatedpricedisplay").innerHTML="Error. Please check date inputed";
+        
+        }else{//alert(document.getElementById("userDateInput").value);
+                document.getElementById("dateChosenDisplay1").innerHTML = document.getElementById("userDateInput").value;
+       			return showPart3();
+        }
+        }
+        </script>
+
+		<div style="text-align: center;">
+		<input type="submit" id="back2" value="Previous" onClick="return showPart1();">
+   		<input type="submit" id="next2" value="Next" onClick="return dateInputedCheck();">
+        </div>
+
+</div> <!-- PART 2 END -->
+
+
+
+<p id="dateChosenDisplay1"></p>
+
+
+
+<h3>3 - Number of Guests</h3> <!-- PART 3: NUMBER OF CHILD AND ADULT GUESTS -->
+
+<div class="container" id="formPart3">
+
+		<script>
+        function updateNumGuestDisplay() {
+        	document.getElementById("adultTickPriceDisplay").innerHTML = "$"+adultPrice+" each";
+            document.getElementById("childTickPriceDisplay").innerHTML = "$"+childPrice+" each";
+        }
+        </script>
+
+		<div style="text-align: center;">
+        <p>Purchase up to 9 tickets total. To buy 10 or more tickets, click <a href="https://docs.google.com/forms/d/e/1FAIpQLSd17fyh_09ZrLAaOUM3GZH1k_yFaDQ-liBFBKm7cuV9w2sAyA/viewform">here</a></p>
+        
+        <br><label><b>Adult Admission</b></label><br>
+        <p>Ages 11+</p>
+        <input type="button" id="subAdult" value="-" onClick="return subSumAdult();">
+        <b>&emsp; <b id="numAdultDisplay">1</b> &emsp;</b>
+        <input type="button" id="addAdult" value="+" onClick="return addSumAdult();">
+        <br><p id="adultTickPriceDisplay"></p>
+        
+        <br><br>
+        
+        <label><b>Child Admission</b></label><br>
+        <p>Ages 3 - 10</p>
+        <input type="button" id="subChild" value="-" onClick="return subSumChild();">
+        <b>&emsp; <b id="numChildDisplay">0</b> &emsp;</b>
+        <input type="button" id="addChild" value="+" onClick="return addSumChild();">
+        <br><p id="childTickPriceDisplay"></p>
+        
+        <br><br><br>
+        
+		<input type="submit" id="back3" value="Previous" onClick="return showPart2()">
+        <input type="submit" id="next3" value="Next" onClick="return goToSummary();">
+   		<!--
+        <input type="submit" id="next2" value="Next" onClick="return dateInputedCheck()">
+        -->
+        </div>
+        
+        <script>
+        var numAdult = 1;
+        var numChild = 0;
+        
+        function addSumAdult() {if(numAdult < 9 && numAdult+numChild<9) {numAdult = numAdult + 1;} document.getElementById("numAdultDisplay").innerHTML = numAdult;
+        }
+        function subSumAdult() {if(numAdult > 1) {numAdult = numAdult - 1;} document.getElementById("numAdultDisplay").innerHTML = numAdult;
+        }
+        
+        function addSumChild() {if(numChild < 9 && numAdult+numChild<9) {numChild = numChild + 1;} document.getElementById("numChildDisplay").innerHTML = numChild;
+        }
+        function subSumChild() {if(numChild > 0) {numChild = numChild - 1;} document.getElementById("numChildDisplay").innerHTML = numChild;
+        }
+        
+        function goToSummary() {
+        	document.getElementById("numberOfGuestsSelected").innerHTML = "Adults (11+): <b>"+numAdult+"</b>  Children (3 - 10): <b>"+numChild+"</b>";
+        	//document.getElementById("formPart3").style.display = "none";
+            return showPart4();
+        }
+        
+        </script>
+        
+        
+       
+
+</div> <!-- PART 3 END -->
+
+
+<p id="numberOfGuestsSelected"></p>
+
+
+
+
+<h3>4 - Order Summary</h3> <!-- PART 4: ORDER SUMMARY -->
+
+<div id="formPart4"> <!-- PART 4 ORDER SUMMARY -->
+
+	<div class="container" style="text-align: center;">
+    <label><b>Order Summary</b></label>
+    <p id="orderSummaryDisplay"></p>
+    </div>
+    <br>
+    <div class="container" style="text-align: center;">
+    	
+        <input type="submit" id="back4" value="Previous" onClick="return showPart3()">
+        <input type="submit" id="next4" value="Continue to Checkout" onClick="return false;">
+        
+    </div>
+
+</div> <!--  PART 4 END -->
+
+
+</body>
+
+</html>
+
