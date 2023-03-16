@@ -56,10 +56,12 @@ body {
 
 .textInput { /* class="textInput"*/
   width:90%;
-  height:50px;
+  height:35px;
   background:white;
   color:black;
   cursor:pointer;
+  border:1px solid black;
+  border-radius:2px;
 }
 .textInput:hover {
   background:Azure;
