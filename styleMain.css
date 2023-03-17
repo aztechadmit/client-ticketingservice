@@ -15,12 +15,20 @@ footer {
   right:0; left:0; bottom:0;
   width:100%;
   min-height:90px;
+  text-align:center;
 }
 
 body {
   font-size:18px;
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.headerLogo { /* class="headerLogo" */
+      height:50px;
+      width:auto;
+      margin:auto;
+      margin-top:13px;
+   }
 
 .lineBreak { /* class="lineBreak" */
   background:DarkGray;
