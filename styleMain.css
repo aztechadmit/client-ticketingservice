@@ -51,6 +51,8 @@ body {
   margin:auto;
   width:95%;
   max-width:800px;
+  margin-bottom:5px;
+  margin-top:5px;
 }
 
 .submitButton { /* class="submit button */
