@@ -81,6 +81,10 @@ body {
 .ticketTypeBtn:hover {
   background-color:Gainsboro;
 }
+.ticketingImage {
+  height:160px;
+  width:auto;
+}
 
 .actionButton { /* class="actionButton" */
   width:40px;
