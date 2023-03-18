@@ -44,6 +44,10 @@ body {
   margin:auto;
 }
 
+.footerSpacer {
+  height:100px;
+}
+
 .container { /* class="container" */
   border:1px solid black;
   border-radius:5px;
