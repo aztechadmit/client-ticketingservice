@@ -35,40 +35,71 @@
 <body style="text-align:center"> <!-- ------------------------------------------------------------------------------------ BODY -->
  
   <br><br><br><br>
- This is a test of the website's central styling sheet<br><br>
-  <div class="container" style="text-align:center;background:#073073;color:white;">
-    Hello! My name is Geography<br>
-    This is my friend Biography, and his other friend Geffography.<br>
-    Together we form the Ographies! <br>
-    We have sex every 13 minutes :)
+ <b style="font-size:20px">Globe-City Adventure Park - Daily Admission</b>
+ <br><br>
+ <div class="container">
+  All Globe-City Adventure Park admission includes access to all rides, attractions, and entertainment within the themepark. Arcade machines, midway, and dining experiences are not included with admission.<br>
+  For information about ticketing tiers and the various ticket types, <a href="https://sites.google.com/view/gcresorthighland/backpages/gcap-ticket-tiers">click here</a>.
+ </div><br>
+ 
+  <div class="container" style="text-align:left;background:#073073;color:white;">
+    <img style="width:40px;height:40px;float:left" src="clientImages/ticketing1.jpg"/><span style="font-size:19px;float:right">Ticket Type</span>
   </div>
  
  <br>
  
- <div class="container">
+
+<div class="container"> <!-- ticket type selection -->
+ 
+ <label>General Admission</label><br>
+ <button class="ticketTypeBtn" onclick="return:false();"><img src="clientImages/ticketing1.jpg" class="ticketingImage"/>
+  <p><b>Oras Nou Resident</b><br>
+   For current Oras Nou residents only. Admission plus access to all rides and attractions.
+   <br><em>Starting at $75</em>
+  </p> </button>
+ 
+    <button class="ticketTypeBtn" onclick="return:false();"><img src="clientImages/ticketing2.jpg" class="ticketingImage"/>
+  <p><b>General Admission</b><br>
+   Includes admission plus access to rides and attractions
+   <br><em>Starting at $85</em>
+  </p> </button>
+ 
+  
+ 
+ <br> <label>GC VIP Admission</label><br>
+ 
+ <button class="ticketTypeBtn" onclick="return:false();"><img src="clientImages/ticketing3.jpg" class="ticketingImage"/>
+  <p><b>VIP Bronze</b><br>
+   Admission plus one-time use priority queuing
+   <br><em>Starting at $99</em>
+  </p> </button>
+ <button class="ticketTypeBtn" onclick="return:false();"><img src="clientImages/ticketing4.jpg" class="ticketingImage"/>
+  <p><b>VIP Silver</b><br>
+   Admission plus multi-use priority queuing
+   <br><em>Starting at $119</em>
+  </p> </button>
+ <button class="ticketTypeBtn" onclick="return:false();"><img src="clientImages/ticketing5.jpg" class="ticketingImage"/>
+  <p><b>VIP Gold</b><br>
+   Admission plus one-time use priority queuing and access to VIP lounges and seating areas
+   <br><em>Starting at $139</em>
+  </p> </button>
+ <button class="ticketTypeBtn" onclick="return:false();"><img src="clientImages/ticketing6.jpg" class="ticketingImage"/>
+  <p><b>VIP Deluxe</b><br>
+   Admission plus unlimited priority queuing and access to VIP lounges and seating areas
+   <br><em>Starting at $199</em>
+  </p> </button>
+ 
+ <br><br><a href="https://sites.google.com/view/gcresorthighland/tickets-and-passes/gc-vip">Learn About GC VIP</a><br>
+ 
+</div><br> <!-- end of ticket type selection -->
+ 
+  <div class="container">
   So anyways, tell me what you think.<br>
   <label>What do you think?</label><br>
   <input type="text" class="textInput"></input><br>
   <input type="date" class="textInput"></input><br>
   
  </div><br>
-
-<div class="container">
- <label>Standard Admission</label><br>
- <button class="ticketTypeBtn" onclick="return:false();"><img src="clientImages/ticketing1.jpg" class="ticketingImage"/>
-  <p><b>Oras Nou Resident</b><br>Starting at $75</p> </button>
- 
-  <button class="ticketTypeBtn" onclick="return:false();"><img src="clientImages/ticketing2.jpg" class="ticketingImage"/>
-  <b>General Admission</b><br>Starting at $85 </button><br>
- 
- <br> <label>GC VIP Admission</label><br>
- <button class="ticketTypeBtn" onclick="return:false();"><img src="clientImages/ticketing3.jpg" class="ticketingImage"/>
-  <b>VIP Bronze</b><br>Starting at $105 </button>
- 
-  <button class="ticketTypeBtn" onclick="return:false();"><img src="clientImages/ticketing4.jpg" class="ticketingImage"/>
-  <b>VIP Gold</b><br>Starting at $199 </button><br>
- 
-</div><br>
 
    <div class="container">
      <button class="submitButton" onclick="window.location.href='../index.html';">Go Back to Index</button>
