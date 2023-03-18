@@ -82,8 +82,10 @@ body {
   background-color:Gainsboro;
 }
 .ticketingImage {
-  height:160px;
-  width:auto;
+  width:100px;
+  height:auto;
+  margin:auto;
+  margin-top:5px;
 }
 
 .actionButton { /* class="actionButton" */
