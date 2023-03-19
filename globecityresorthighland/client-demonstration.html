@@ -99,9 +99,19 @@
   <br>
   <label>Select the first date of your visit</label><br>
   <input type="date" class="textInput" onChange="alert('date chosen');" onclick="showPicker();"></input><br><br>
-  <label>Select the number of days  &nbsp; &nbsp; &nbsp;</label>
+  <label>Select the number of days  &nbsp; &nbsp; &nbsp;</label><span onload="checkWidth();" id="lineBreakerText"></span>
   <input type="radio" class="radioInput" name="numberDay" value="1" checked>1<input type="radio" name="numberDay" class="radioInput" value="2">2<input type="radio" name="numberDay" class="radioInput" value="3">3<input type="radio" class="radioInput" name="numberDay" value="4">4
-  <br>
+  
+    <script> //Check if day selector needs to move to new line
+     window.onresize = checkWidth; 
+     function checkWidth() {
+       if(window.innerWidth < 500){
+          document.getElementById("lineBreakerText").innerHTML = "<br>";
+       }
+      }
+    </script>
+ 
+ <br>
   <p id="dateWarning" style="font-size:11px;color:red;">Multi-Day tickets must be used within <b>60 days</b> of first visit</p>
   <br>
   <button class="backButton">Previous</button><button class="submitButton">Next</button>
