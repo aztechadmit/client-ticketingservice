@@ -53,13 +53,13 @@
  <label>General Admission</label><br>
  <button class="ticketTypeBtn" onclick="return:false();"><img src="clientImages/ticketing1.jpg" class="ticketingImage"/>
   <p><b>Oras Nou Resident</b><br>
-   For current Oras Nou residents only. Admission plus access to all rides and attractions.
+   For current Oras Nou residents only. Includes general admission for one guest
    <br><br><em>Starting at $75</em>
   </p> </button>
  
     <button class="ticketTypeBtn" onclick="return:false();"><img src="clientImages/ticketing2.jpg" class="ticketingImage"/>
   <p><b>General Admission</b><br>
-   Includes admission plus access to rides and attractions
+   Includes general admission for one guest
    <br><br><em>Starting at $85</em>
   </p> </button>
  
@@ -94,17 +94,20 @@
  
 
  
-  <div class="container">
-  So anyways, tell me what you think.<br>
-  <label>What do you think?</label><br>
-  <input type="text" class="textInput"></input><br>
-  <input type="date" class="textInput"></input><br>
+  <div class="container" id="dateAndNumDay"> <!-- date selection --.----------------------------------------------------------------------------->
+  <br>
+  <label>Select the first date of your visit</label><br>
+  <input type="date" class="textInput" onclick="datepicker.show();"></input><br>
+  <input type="number" class="textInput" min="1" max="5" defaultValue="1"></input><br>
+  <p id="dateWarning" style="font-size:11px;color:red;">Multi-Day tickets must be used within <b>60 days</b> of first visit</p>
+  <br>
+  <button class="backButton">Previous</button><button class="submitButton">Next</button>
   
- </div><br>
+  </div><br> <!-- end of date selection --.----------------------------------------------------------------------------->
 
    <div class="container">
      <button class="submitButton" onclick="window.location.href='../index.html';">Go Back to Index</button>
-     </div>
+   </div>
 
   <br><br>
 
