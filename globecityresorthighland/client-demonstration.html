@@ -54,7 +54,7 @@
  function initiateLoading(loadTime){
             document.getElementById("loadingGroup").style.display="block";
             document.getElementById("bodyMain").style.display="none";
-            document.getElementById("ticket-type-selection").style.display="none";
+            //document.getElementById("ticket-type-selection").style.display="none";
             document.getElementById("dateAndNumDay").style.display="none";
             loadTimeOut = setTimeout(showPage, loadTime);
           }
@@ -66,8 +66,8 @@
          }
  </script>
 
- <div id="bodyMain" onload="initiateLoading(5000);" class="bodyMain">
-<body style="text-align:center" onload="initiateLoading();"> <!-- ------------------------------------------------------------------------------------ BODY -->
+ <div id="bodyMain" class="bodyMain">
+<body style="text-align:center" onload="initiateLoading(5000);"> <!-- ------------------------------------------------------------------------------------ BODY -->
  
  <div id="spacer" style="height:90px;display:block;"></div>
  
@@ -141,8 +141,8 @@
             previousTicketType = ticketType;
           }
           initiateLoading(3000);
-        }
-      </script>
+        }//end of tikTypeNext
+      </script><!-- end of ticket type processing -->
       
       
       
