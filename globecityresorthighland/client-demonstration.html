@@ -9,7 +9,7 @@
  </head>
 
  <script> // VARIABLES -----------------------------------------------------------------------------------------------------------
-   const numDay; //number of days per multi-day ticket
+   const numDay = 1; //number of days per multi-day ticket
    const dateInput; //guests choice of date
  </script><!-- VARIABLES -------------------------------------------------------------------------------------------------------->
  
@@ -119,10 +119,10 @@
        }
       }
      function setMD() { //set the value of numDay
-       numDay = document.getElementByName("numberDay").value;
+       numDay = document.querySelector('input[name="numberDay"]:checked').value;
        if(numDay == 1) {document.getElementById("dateWarning").innerHTML = "";}
        else {document.getElementById("dateWarning").innerHTML="Multi-Day tickets must be used within <b>60 days</b> of first visit";}
-       alert("Number of days: "+numDay);
+       //alert("Number of days: "+numDay);
      }
     </script>
  
