@@ -8,6 +8,11 @@
     <link rel="icon" type="image/x-icon" href="../imageMain/webfavicon.ico">
  </head>
 
+ <script> // VARIABLES -----------------------------------------------------------------------------------------------------------
+   const numDay; //number of days per multi-day ticket
+   const dateInput; //guests choice of date
+ </script><!-- VARIABLES -------------------------------------------------------------------------------------------------------->
+ 
   <style>
     .container {
       background-color:#efefef;
@@ -104,19 +109,25 @@
  <div class="lineBreak"></div><br>
  <br>
   <label>Select the number of days  &nbsp; &nbsp; &nbsp;</label><span onload="checkWidth();" id="lineBreakerText"></span>
-  <input type="radio" class="radioInput" name="numberDay" value="1" checked>1<input type="radio" name="numberDay" class="radioInput" value="2">2<input type="radio" name="numberDay" class="radioInput" value="3">3<input type="radio" class="radioInput" name="numberDay" value="4">4
+  <input type="radio" class="radioInput" name="numberDay" value="1"  checked>1<input type="radio" name="numberDay" class="radioInput" value="2" onclick="setMD();">2<input type="radio" name="numberDay" class="radioInput" value="3" onclick="setMD();">3<input type="radio" class="radioInput" name="numberDay" value="4" onclick="setMD();">4
   
-    <script> //Check if day selector needs to move to new line
+    <script> 
      window.onresize = checkWidth; 
-     function checkWidth() {
+     function checkWidth() { //Check if day selector needs to move to new line
        if(window.innerWidth < 500){
           document.getElementById("lineBreakerText").innerHTML = "<br>";
        }
       }
+     function setMD() { //set the value of numDay
+       numDay = document.getElementByName("numberDay").value;
+       if(numDay == 1) {document.getElementById("dateWarning").innerHTML = "";}
+       else {document.getElementByName("dateWarning").innerHTML="Multi-Day tickets must be used within <b>60 days</b> of first visit";}
+       alert("Number of days: "+numDay);
+     }
     </script>
  
  <br>
-  <p id="dateWarning" style="font-size:11px;color:red;">Multi-Day tickets must be used within <b>60 days</b> of first visit</p>
+  <p id="dateWarning" style="font-size:11px;color:red;"></p>
   <br>
   <button class="backButton">Previous</button><button class="submitButton">Next</button>
   
