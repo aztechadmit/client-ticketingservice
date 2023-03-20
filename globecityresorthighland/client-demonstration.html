@@ -55,7 +55,7 @@
             document.getElementById("loadingGroup").style.display="block";
             document.getElementById("bodyMain").style.display="none";
             //document.getElementById("ticket-type-selection").style.display="none";
-            document.getElementById("dateAndNumDay").style.display="none";
+            //document.getElementById("dateAndNumDay").style.display="none";
             loadTimeOut = setTimeout(showPage, loadTime);
           }
   function showPage() {
@@ -131,16 +131,20 @@
       
       <script> //Ticket Type Processing
        var previousTicketType;
+       var loadNextTime;
         function tikTypeNext(stringInput) {
           ticketType = stringInput;
           document.getElementById("headerText").innerHTML = "<b>Order Summary</b><br><br>Ticket Type Selected: "+ticketType+" Admission<br>";
           document.getElementById("dateAndNumDay").style.display="block";
+          document.getElementById("ticket-type-selection").style.display="none";
           if(previousTicketType != ticketType){
             document.getElementById("userDateInput").value = "";
             document.getElementById("estimatedPriceDisplay").innerHTML = "";
             previousTicketType = ticketType;
-          }
-          initiateLoading(3000);
+            loadNextTime = 3000;
+          }else{loadNextTime=1000;}
+         
+          initiateLoading(loadNextTime);
         }//end of tikTypeNext
       </script><!-- end of ticket type processing -->
       
@@ -156,7 +160,7 @@
  
  
 
-    <div id="dateAndNumDay"> <!-- date selection --.----------------------------------------------------------------------------------------------------------->
+    <div id="dateAndNumDay" style="display:none;"> <!-- date selection --.----------------------------------------------------------------------------------------------------------->
      <div class="container" style="text-align:left;background:#073073;color:white;">
         <img style="width:50px;height:50px;left:5px;vertical-align:middle;" src="clientImages/num2.png"/><span style="margin-left:10px;font-size:20px;">Date of Visits</span>
       </div>
@@ -185,19 +189,30 @@
            else {document.getElementById("dateWarning").innerHTML="Multi-Day tickets must be used within <b>60 days</b> of first visit";}
            //alert("Number of days: "+numDay);
          }
+         function goBackToTTS(){
+          initiateLoading(100);
+          document.getElementById("dateAndNumDay").style.display="none";
+          document.getElementById("ticket-type-selection").style.display="block";
+         }
         </script>
 
      <br>
       <p id="dateWarning" style="font-size:11px;color:red;"></p>
       <br>
-      <button class="backButton">Previous</button><button class="submitButton" onclick="dateSelectionNext();">Next</button>
+      <button class="backButton" onclick="goBackToTTS();">Previous</button><button class="submitButton" onclick="dateSelectionNext();">Next</button>
 
        <script> 
          function dateSelectionNext() {
+          if(document.getElementById("userDateInput").value == ""){
+           document.getElementById("estimatedPriceDisplay").innerHTML = "<span style='color:red'>Please select a date of your first visit.</span>";
+          }else{
            initiateLoading(4000);
-         }
+           document.getElementById("dateAndNumDay").style.display="none";
+               }
+         }//end of function dateSelectionNext
        </script> 
      </div>
+ 
       </div><br> <!-- end of date selection --.---------------------------------------------------------------------------------------------------->
 
   
