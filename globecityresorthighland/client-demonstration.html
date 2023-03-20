@@ -12,8 +12,12 @@
  <script src="/scripts/gc-ticketingDataBase.js"></script>
  
  <script> // VARIABLES -----------------------------------------------------------------------------------------------------------
-   const numDay = 1; //number of days per multi-day ticket
-   const dateInput; //guests choice of date
+   var numDay = 1; //number of days per multi-day ticket
+   var dateInput; //guests choice of date
+   var ticketType; //ticket type selected
+   var numAdult;
+   var numChild;
+   
  </script><!-- VARIABLES -------------------------------------------------------------------------------------------------------->
  
   <style>
@@ -46,10 +50,12 @@
   <p class="loadingText">Please Wait</p>
  </div>
  <script> // Loading Animation control
-  var loadTime = 3000; var loadTimeOut;
- function initiateLoading(){
+ var loadTimeOut;
+ function initiateLoading(loadTime){
             document.getElementById("loadingGroup").style.display="block";
             document.getElementById("bodyMain").style.display="none";
+            document.getElementById("ticket-type-selection").style.display="none";
+            document.getElementById("datAndNumDay").style.display="none";
             loadTimeOut = setTimeout(showPage, loadTime);
           }
   function showPage() {
@@ -60,111 +66,141 @@
          }
  </script>
 
- <div id="bodyMain" onload="initiateLoading();" class="bodyMain">
+ <div id="bodyMain" onload="initiateLoading(5000);" class="bodyMain">
 <body style="text-align:center" onload="initiateLoading();"> <!-- ------------------------------------------------------------------------------------ BODY -->
  
  <div id="spacer" style="height:90px;display:block;"></div>
  
  <div class="container" style="font-size:17px;">
-  <b style="font-size:20px">Globe-City Adventure Park - Daily Admission</b><br><br>
-  All Globe-City Adventure Park admission includes access to all rides, attractions, and entertainment within the themepark. Arcade machines, midway, and dining experiences are not included with admission.<br>
-  For information about ticketing tiers and the various ticket types, <a href="https://sites.google.com/view/gcresorthighland/backpages/gcap-ticket-tiers"target="_blank">click here</a>.
+  <b style="font-size:20px">Globe-City Adventure Park - Daily Admission</b><br>
+  <p id="headerText">Globe-City Adventure Park admission includes access to all rides, attractions, and entertainment within the themepark. Arcade machines, midway, and dining experiences are not included with admission.<br>
+  For information about ticketing tiers and the various ticket types, <a href="https://sites.google.com/view/gcresorthighland/backpages/gcap-ticket-tiers"target="_blank">click here</a>.</p>
  </div><br>
  
-  <div class="container" style="text-align:left;background:#073073;color:white;">
-    <img style="width:50px;height:50px;left:5px;vertical-align:middle;" src="clientImages/num1.png"/><span style="margin-left:10px;font-size:20px;">Select Ticket Type</span>
-  </div>
+ 
+ 
+ 
+     <div id="ticket-type-selection"> <!-- ticket type selection --.----------------------------------------------------------------------------->
+      <div class="container" style="text-align:left;background:#073073;color:white;">
+        <img style="width:50px;height:50px;left:5px;vertical-align:middle;" src="clientImages/num1.png"/><span style="margin-left:10px;font-size:20px;">Select Ticket Type</span>
+      </div>
+
+    <div class="container"> 
+
+     <label>General Admission</label><br>
+     <button class="ticketTypeBtn" onclick="tikTypeNext('Oras Nou Resident');"><img src="clientImages/ticketing1.jpg" class="ticketingImage"/>
+      <p><b>Oras Nou Resident</b><br>
+       For current Oras Nou residents only. Includes general admission for one guest
+       <br><br><em>Starting at $75</em>
+      </p> </button>
+
+        <button class="ticketTypeBtn" onclick="tikTypeNext('General');"><img src="clientImages/ticketing2.jpg" class="ticketingImage"/>
+      <p><b>General Admission</b><br>
+       Includes general admission for one guest
+       <br><br><em>Starting at $85</em>
+      </p> </button>
+
+
+
+     <br><br> <label>GC VIP Admission</label><br>
+
+     <button class="ticketTypeBtn" onclick="tikTypeNext('VIP Bronze');"><img src="clientImages/ticketing3.jpg" class="ticketingImage"/>
+      <p><b>VIP Bronze</b><br>
+       Admission plus one-time use priority queuing
+       <br><br><em>Starting at $99</em>
+      </p> </button>
+     <button class="ticketTypeBtn" onclick="tikTypeNext('VIP Silver');"><img src="clientImages/ticketing4.jpg" class="ticketingImage"/>
+      <p><b>VIP Silver</b><br>
+       Admission plus multi-use priority queuing
+       <br><br><em>Starting at $119</em>
+      </p> </button>
+     <button class="ticketTypeBtn" onclick="tikTypeNext('VIP Gold');"><img src="clientImages/ticketing5.jpg" class="ticketingImage"/>
+      <p><b>VIP Gold</b><br>
+       Admission plus one-time use priority queuing and access to VIP lounges and seating areas
+       <br><br><em>Starting at $139</em>
+      </p> </button>
+     <button class="ticketTypeBtn" onclick="tikTypeNext('VIP Deluxe');"><img src="clientImages/ticketing6.jpg" class="ticketingImage"/>
+      <p><b>VIP Deluxe</b><br>
+       Admission plus unlimited priority queuing and access to VIP lounges and seating areas
+       <br><br><em>Starting at $199</em>
+      </p> </button>
+
+     <br><br><a href="https://sites.google.com/view/gcresorthighland/tickets-and-passes/gc-vip"target="_blank">Learn About GC VIP</a><br><br>
+
+      </div>
+      
+      <script> //Ticket Type Processing
+       var previousTicketType;
+        function tikTypeNext(stringInput) {
+          ticketType = stringInput;
+          document.getElementById("headerText").innerHTML = "<b>Order Summary</b><br><br>Ticket Type Selected: "+ticketType+" Admission<br>";
+          document.getElementById("dateAndNumDay").style.display="block";
+          if(previousTicketType != ticketType){
+            document.getElementById("userDateInput").value = "";
+            document.getElementById("estimatedPriceDisplay").innerHTML = "";
+            previousTicketType = ticketType;
+          }
+          initiateLoading(3000);
+        }
+      </script>
+      
+      
+      
+      
+    </div><br> <!-- end of ticket type selection -------------------------------------------------------------------------------------------------------------->
+
+ 
+ 
+ 
+ 
+ 
  
 
-<div class="container" id="ticket-type-selection"> <!-- ticket type selection --.----------------------------------------------------------------------------->
- 
- <label>General Admission</label><br>
- <button class="ticketTypeBtn" onclick="return:false();"><img src="clientImages/ticketing1.jpg" class="ticketingImage"/>
-  <p><b>Oras Nou Resident</b><br>
-   For current Oras Nou residents only. Includes general admission for one guest
-   <br><br><em>Starting at $75</em>
-  </p> </button>
- 
-    <button class="ticketTypeBtn" onclick="return:false();"><img src="clientImages/ticketing2.jpg" class="ticketingImage"/>
-  <p><b>General Admission</b><br>
-   Includes general admission for one guest
-   <br><br><em>Starting at $85</em>
-  </p> </button>
- 
-  
- 
- <br><br> <label>GC VIP Admission</label><br>
- 
- <button class="ticketTypeBtn" onclick="return:false();"><img src="clientImages/ticketing3.jpg" class="ticketingImage"/>
-  <p><b>VIP Bronze</b><br>
-   Admission plus one-time use priority queuing
-   <br><br><em>Starting at $99</em>
-  </p> </button>
- <button class="ticketTypeBtn" onclick="return:false();"><img src="clientImages/ticketing4.jpg" class="ticketingImage"/>
-  <p><b>VIP Silver</b><br>
-   Admission plus multi-use priority queuing
-   <br><br><em>Starting at $119</em>
-  </p> </button>
- <button class="ticketTypeBtn" onclick="return:false();"><img src="clientImages/ticketing5.jpg" class="ticketingImage"/>
-  <p><b>VIP Gold</b><br>
-   Admission plus one-time use priority queuing and access to VIP lounges and seating areas
-   <br><br><em>Starting at $139</em>
-  </p> </button>
- <button class="ticketTypeBtn" onclick="return:false();"><img src="clientImages/ticketing6.jpg" class="ticketingImage"/>
-  <p><b>VIP Deluxe</b><br>
-   Admission plus unlimited priority queuing and access to VIP lounges and seating areas
-   <br><br><em>Starting at $199</em>
-  </p> </button>
- 
- <br><br><a href="https://sites.google.com/view/gcresorthighland/tickets-and-passes/gc-vip"target="_blank">Learn About GC VIP</a><br><br>
- 
-</div><br> <!-- end of ticket type selection -->
- 
+    <div id="dateAndNumDay"> <!-- date selection --.----------------------------------------------------------------------------------------------------------->
+     <div class="container" style="text-align:left;background:#073073;color:white;">
+        <img style="width:50px;height:50px;left:5px;vertical-align:middle;" src="clientImages/num2.png"/><span style="margin-left:10px;font-size:20px;">Date of Visits</span>
+      </div>
 
- <div class="container" style="text-align:left;background:#073073;color:white;">
-    <img style="width:50px;height:50px;left:5px;vertical-align:middle;" src="clientImages/num2.png"/><span style="margin-left:10px;font-size:20px;">Date of Visits</span>
-  </div>
- 
-  <div class="container" id="dateAndNumDay"> <!-- date selection --.----------------------------------------------------------------------------->
-  <br>
-  <label>Select the first date of your visit</label><br>
-  <input type="date" class="textInput" onChange="alert('date chosen');" onclick="showPicker();"></input>
-    <p id="estimatedPriceDisplay">Select a date to determine ticket price</p>
-    <a href="https://sites.google.com/view/gcresorthighland/backpages/gcap-ticket-tiers"target="_blank">Learn about ticket tiers</a><br><br><br>
- <div class="lineBreak"></div><br>
- <br>
-  <label>Select the number of days  &nbsp; &nbsp; &nbsp;</label><span onload="checkWidth();" id="lineBreakerText"></span>
-  <input type="radio" class="radioInput" name="numberDay" value="1"  onclick="setMD();" checked>1<input type="radio" name="numberDay" class="radioInput" value="2" onclick="setMD();">2<input type="radio" name="numberDay" class="radioInput" value="3" onclick="setMD();">3<input type="radio" class="radioInput" name="numberDay" value="4" onclick="setMD();">4
-  
-    <script> 
-     window.onresize = checkWidth; 
-     function checkWidth() { //Check if day selector needs to move to new line
-       if(window.innerWidth < 500){
-          document.getElementById("lineBreakerText").innerHTML = "<br>";
-       }
-      }
-     function setMD() { //set the value of numDay
-       numDay = document.querySelector('input[name="numberDay"]:checked').value;
-       if(numDay == 1) {document.getElementById("dateWarning").innerHTML = "";}
-       else {document.getElementById("dateWarning").innerHTML="Multi-Day tickets must be used within <b>60 days</b> of first visit";}
-       //alert("Number of days: "+numDay);
-     }
-    </script>
- 
- <br>
-  <p id="dateWarning" style="font-size:11px;color:red;"></p>
-  <br>
-  <button class="backButton">Previous</button><button class="submitButton" onclick="dateSelectionNext();">Next</button>
- 
-   <script> 
-     function dateSelectionNext() {
-       loadTime = 4000;
-       initiateLoading();
-     }
-   </script> 
-  
-  </div><br> <!-- end of date selection --.----------------------------------------------------------------------------->
+      <div class="container"> 
+      <br>
+      <label>Select the first date of your visit</label><br>
+      <input type="date" id="userDateInput" class="textInput" onChange="alert('date chosen');" onclick="showPicker();"></input>
+        <p id="estimatedPriceDisplay">Select a date to determine ticket price</p>
+        <a href="https://sites.google.com/view/gcresorthighland/backpages/gcap-ticket-tiers"target="_blank">Learn about ticket tiers</a><br><br><br>
+     <div class="lineBreak"></div><br>
+     <br>
+      <label>Select the number of days  &nbsp; &nbsp; &nbsp;</label><span onload="checkWidth();" id="lineBreakerText"></span>
+      <input type="radio" class="radioInput" name="numberDay" value="1"  onclick="setMD();" checked>1<input type="radio" name="numberDay" class="radioInput" value="2" onclick="setMD();">2<input type="radio" name="numberDay" class="radioInput" value="3" onclick="setMD();">3<input type="radio" class="radioInput" name="numberDay" value="4" onclick="setMD();">4
 
+        <script> 
+         window.onresize = checkWidth; 
+         function checkWidth() { //Check if day selector needs to move to new line
+           if(window.innerWidth < 500){
+              document.getElementById("lineBreakerText").innerHTML = "<br>";
+           }
+          }
+         function setMD() { //set the value of numDay
+           numDay = document.querySelector('input[name="numberDay"]:checked').value;
+           if(numDay == 1) {document.getElementById("dateWarning").innerHTML = "";}
+           else {document.getElementById("dateWarning").innerHTML="Multi-Day tickets must be used within <b>60 days</b> of first visit";}
+           //alert("Number of days: "+numDay);
+         }
+        </script>
+
+     <br>
+      <p id="dateWarning" style="font-size:11px;color:red;"></p>
+      <br>
+      <button class="backButton">Previous</button><button class="submitButton" onclick="dateSelectionNext();">Next</button>
+
+       <script> 
+         function dateSelectionNext() {
+           initiateLoading(4000);
+         }
+       </script> 
+     </div>
+      </div><br> <!-- end of date selection --.---------------------------------------------------------------------------------------------------->
+
+  
    <div class="container">
      <button class="submitButton" onclick="window.location.href='../index.html';">Go Back to Index</button>
    </div>
