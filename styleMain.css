@@ -71,7 +71,7 @@ body {
     top:0;
     left:0;
 	animation-name: containerAnimation;
-	animation-duration: 0.5s;
+	animation-duration: 0.2s;
 }
 .loadingText {
 	z-index:201;
@@ -97,8 +97,10 @@ body {
   max-width:800px;
   margin-bottom:5px;
   margin-top:5px;
+}
+.bodyMain {
 	animation-name: containerAnimation;
-	animation-duration: 0.5s;
+	animation-duration: 0.4s;
 }
 @keyframes containerAnimation {
 	from{opacity:0;}
