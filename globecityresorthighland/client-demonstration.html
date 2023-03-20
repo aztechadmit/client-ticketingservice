@@ -146,7 +146,14 @@
  <br>
   <p id="dateWarning" style="font-size:11px;color:red;"></p>
   <br>
-  <button class="backButton">Previous</button><button class="submitButton">Next</button>
+  <button class="backButton">Previous</button><button class="submitButton" onclick="dateSelectionNext();">Next</button>
+ 
+   <script> 
+     function dateSelectionNext() {
+       loadTime = 4000;
+       initiateLoading();
+     }
+   </script> 
   
   </div><br> <!-- end of date selection --.----------------------------------------------------------------------------->
 
