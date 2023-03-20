@@ -7,6 +7,7 @@ header {
   text-align:center;
   text-align-vertical:center;
   width:100%;
+  z-index:999;
 }
 
 footer {
@@ -69,6 +70,16 @@ body {
     position:absolute;
     top:0;
     left:0;
+}
+.loadingText {
+	z-index:201;
+    text-align:center;
+    position:absolute;
+    top:15%;
+    margin-top:180px;
+    left:50%;
+    margin-left:-45px;
+    font-size:20px;
 }
 @keyframes spin { /* animates the loading symbol */
   0% { -webkit-transform: rotate(0deg); }
