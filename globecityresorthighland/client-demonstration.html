@@ -37,7 +37,24 @@
   <img src="clientImages/gcResortLogoRemade.png" class="headerLogo"/>
  </header>
  
-<body style="text-align:center"> <!-- ------------------------------------------------------------------------------------ BODY -->
+<body style="text-align:center" onload="initiateLoading();"> <!-- ------------------------------------------------------------------------------------ BODY -->
+ 
+ <div id="loadingGroup">
+  <div class="loader" id="loader"></div>
+  <div class="cover" id="cover"></div>
+  <p class="loadingText">Please Wait</p>
+ </div>
+ <script> // Loading Animation control
+  var loadTime = 3000; var loadTimeOut;
+ function initiateLoading(){
+            document.getElementById("loadingGroup").style.display="block";
+            loadTimeOut = setTimeout(showPage, loadTime);
+          }
+  function showPage() {
+            document.getElementById("loadingGroup").style.display="none";
+         }
+ </script>
+ 
  <div id="spacer" style="height:90px;display:block;"></div>
  
  <div class="container" style="font-size:17px;">
