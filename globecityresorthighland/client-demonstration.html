@@ -121,7 +121,7 @@
      function setMD() { //set the value of numDay
        numDay = document.getElementByName("numberDay").value;
        if(numDay == 1) {document.getElementById("dateWarning").innerHTML = "";}
-       else {document.getElementByName("dateWarning").innerHTML="Multi-Day tickets must be used within <b>60 days</b> of first visit";}
+       else {document.getElementById("dateWarning").innerHTML="Multi-Day tickets must be used within <b>60 days</b> of first visit";}
        alert("Number of days: "+numDay);
      }
     </script>
