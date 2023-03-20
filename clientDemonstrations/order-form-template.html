@@ -1,27 +1,68 @@
 <!DOCTYPE html>
 <html>
-  <head> <!-- Basic HTML Page Setup -->
-    <!-- Remember to double check file links and insert ../ to escape subfolders -->
-    <title>PAGE TITLE GOES HERE</title>
+
+ <head> <!-- Basic HTML Page Setup -->
+    <title>P A G E  T I T L E</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styleMain.css">
     <link rel="icon" type="image/x-icon" href="../imageMain/webfavicon.ico">
-  </head>
-
-  
-  <header> <!-- The non-moving page header will go here -->
-    <img src="clientImages/gcResortLogoRemade.png" class="headerLogo"/>
-  </header>
-  
-  <style> /* All Style Edits to Standard Styles go Here -->
+ </head>
+ 
+ <!-- Link to necessary scripts -->
+ <script src="/scripts/gc-ticketingDataBase.js"></script>
+ 
+ <script> // VARIABLES -----------------------------------------------------------------------------------------------------------
+   
+ </script><!-- VARIABLES -------------------------------------------------------------------------------------------------------->
+ 
+  <style>
     
   </style>
   
-  <body style="margin-top:80px;"> <!-- THIS IS THE MAIN BODY OF THE PAGE, MOST CONTENT GOES HERE -------->
-    
-    
-  </body>
+ <header>
+  <img src="clientImages/gcResortLogoRemade.png" class="headerLogo"/>
+ </header>
+ 
+ <div id="loadingGroup">
+  <div class="loader" id="loader"></div>
+  <div class="cover" id="cover"></div>
+  <p class="loadingText">Please Wait</p>
+ </div>
+ <script> // Loading Animation control
+  var loadTime = 3000; var loadTimeOut;
+ function initiateLoading(){
+            document.getElementById("loadingGroup").style.display="block";
+            document.getElementById("bodyMain").style.display="none";
+            loadTimeOut = setTimeout(showPage, loadTime);
+          }
+  function showPage() {
+            document.getElementById("loadingGroup").style.display="none";
+            document.getElementById("bodyMain").style.display="block";
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+         }
+ </script>
+
+<div id="bodyMain" onload="initiateLoading();" class="bodyMain">
+<body style="text-align:center" onload="initiateLoading();"> <!-- ------------------------------------------------------------------------------------ BODY -->
+ <div id="spacer" style="height:90px;display:block;"></div>
+ 
+  <!-- body content goes here -->
+ 
   
+  
+  
+  
+  
+  
+  
+  
+  
+<br><br><span style="color:gray;font-size:13px;">For best experience, order tickets from your desktop computer</span>
+
+
+<!-- FOOTER ------------------------------------------------------------------------------------------------------------------------------------>
+ <div class="footerSpacer"></div>
  <footer>
     <div style="max-width:900px;margin:auto;text-align:left;font-size:12px;font-family: Arial, Helvetica, sans-serif;">
     <br><div class="lineBreak"></div><br>
@@ -36,5 +77,7 @@
     </div>
  </footer>
 
-  
+
+</body> <!-- end of main body ALL STUFF GOES ABOVE HERE -->
+</div> <!-- end of bodyMain -->
 </html>
