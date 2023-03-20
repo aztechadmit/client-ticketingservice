@@ -7,7 +7,10 @@
     <link rel="stylesheet" href="../styleMain.css">
     <link rel="icon" type="image/x-icon" href="../imageMain/webfavicon.ico">
  </head>
-
+ 
+ <!-- Link to necessary scripts -->
+ <script src="/scripts/gc-ticketingDataBase.js"></script>
+ 
  <script> // VARIABLES -----------------------------------------------------------------------------------------------------------
    const numDay = 1; //number of days per multi-day ticket
    const dateInput; //guests choice of date
@@ -37,9 +40,7 @@
   <img src="clientImages/gcResortLogoRemade.png" class="headerLogo"/>
  </header>
  
-<body style="text-align:center" onload="initiateLoading();"> <!-- ------------------------------------------------------------------------------------ BODY -->
- 
- <div id="loadingGroup">
+ <div id="loadingGroup" onload="initiateLoading();">
   <div class="loader" id="loader"></div>
   <div class="cover" id="cover"></div>
   <p class="loadingText">Please Wait</p>
@@ -48,14 +49,19 @@
   var loadTime = 3000; var loadTimeOut;
  function initiateLoading(){
             document.getElementById("loadingGroup").style.display="block";
+            document.getElementById("bodyMain").style.display="none";
             loadTimeOut = setTimeout(showPage, loadTime);
           }
   function showPage() {
             document.getElementById("loadingGroup").style.display="none";
+            document.getElementById("bodyMain").style.display="block";
             document.body.scrollTop = 0; // For Safari
             document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
          }
  </script>
+
+ <div id="bodyMain">
+<body style="text-align:center" id="body"> <!-- ------------------------------------------------------------------------------------ BODY -->
  
  <div id="spacer" style="height:90px;display:block;"></div>
  
@@ -190,4 +196,5 @@
 
 
 </body> <!-- end of main body ALL STUFF GOES ABOVE HERE -->
+ </div> <!-- end of bodyMain -->
 </html>
