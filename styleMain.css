@@ -70,6 +70,8 @@ body {
     position:fixed;
     top:0;
     left:0;
+	animation-name: containerAnimation;
+	animation-duration: 0.5s;
 }
 .loadingText {
 	z-index:201;
@@ -95,8 +97,13 @@ body {
   max-width:800px;
   margin-bottom:5px;
   margin-top:5px;
+	animation-name: containerAnimation;
+	animation-duration: 0.5s;
 }
-
+@keyframes containerAnimation {
+	from{opacity:0;}
+	to{opacity:1;}
+}
 .submitButton { /* class="submit button */
   border-radius:8px;
   border:none;
