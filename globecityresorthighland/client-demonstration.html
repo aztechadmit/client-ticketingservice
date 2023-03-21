@@ -144,8 +144,8 @@
             document.getElementById("userDateInput").value = "";
             document.getElementById("estimatedPriceDisplay").innerHTML = "";
             previousTicketType = ticketType;
-            loadNextTime = 3000;
-          }else{loadNextTime=1000;}
+            loadNextTime = 2000;
+          }else{loadNextTime=800;}
          
           initiateLoading(loadNextTime);
         }//end of tikTypeNext
@@ -194,7 +194,7 @@
            numDay = document.querySelector('input[name="numberDay"]:checked').value;
            if(numDay == 1) {document.getElementById("dateWarning").innerHTML = "";}
            else {document.getElementById("dateWarning").innerHTML="Multi-Day tickets must be used within <b>60 days</b> of first visit";}
-           if(document.getElementById("userDateInput").value != 0){dateChanged();}//update ticket price if there is a date inputed
+           if(document.getElementById("userDateInput").value != ""){dateChanged();}//update ticket price if there is a date inputed
          }
          function goBackToTTS(){
           initiateLoading(100);
@@ -207,25 +207,28 @@
            dateInput = new Date(document.getElementById("userDateInput").value);
            var today = new Date();
            var maxDate = maxDateAdvance*(24*60*60*1000);
-           if(dateInput != previousDateInput) {
-             // step 1 - make sure date is not yesterday or beyond
-             previousDateInput = dateInput;
-             if (dateInput.getTime() < today.getTime()) {
+           if(document.getElementById("userDateInput").value != previousDateInput) {
+                         previousDateInput = document.getElementById("userDateInput").value; 
+            // step 1 - make sure date is not yesterday or beyond
+
+             if ((dateInput - today) < 0) {
                document.getElementById("estimatedPriceDisplay").innerHTML = "<span style='color:red'>Date cannot be before today</span>";
-             }else if(dateInput.getTime() - today.getTime() > maxDate){
+             }else if((dateInput - today) > maxDate){
                document.getElementById("estimatedPriceDisplay").innerHTML = "<span style='color:red'>Selected date must be within "+maxDateAdvance+" days of today</span>";
              }else{
                adultPriceEst = 100;
                childPriceEst = 90;
+               document.getElementById("estimatedPriceDisplay").innerHTML = "Estimated Price: <b>"+adultPrice+"</b> per ticket";
              }
             
             
            }else if(adultPriceEst != 0){//if date was not changed, then the number of days was changed. But also make sure the price is not 0
              adultPrice = adultPriceEst - ((numDay-1)*mutiDayDiscount);
              childPrice = childPriceEst - ((numDay-1)*mutiDayDiscount);
+             document.getElementById("estimatedPriceDisplay").innerHTML = "Estimated Price: <b>"+adultPrice+"</b> per ticket";
            }
           
-          document.getElementById("estimatedPriceDisplay").innerHTML = "Estimated Price: <b>"+adultPrice+"</b> per ticket";
+          
           document.getElementById("headerText").innerHTML = "<b>Order Summary</b><br><br>Ticket Type Selected: "+ticketType+" Admission<br>";
           document.getElementById("headerText").innerHTML += "Date Selected: "+dateInput.getMonth()+"-"+dateInput.getDay()+"-"+dateInput.getFullYear()+"<br>";
           
