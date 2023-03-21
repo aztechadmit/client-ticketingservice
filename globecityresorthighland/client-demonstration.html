@@ -137,7 +137,7 @@
        var loadNextTime;
         function tikTypeNext(stringInput) {
           ticketType = stringInput;
-          document.getElementById("headerText").innerHTML = "<b>Order Summary</b><br><br>Ticket Type Selected: "+ticketType+" Admission<br>";
+          document.getElementById("headerText").innerHTML = "<b>Order Summary</b><br><p>Ticket Type Selected: "+ticketType+" Admission</p>";
           document.getElementById("dateAndNumDay").style.display="block";
           document.getElementById("ticket-type-selection").style.display="none";
           if(previousTicketType != ticketType){
@@ -217,11 +217,11 @@
                   var formatedDate = prices[2];
               
                   document.getElementById("estimatedPriceDisplay").innerHTML = "Estimated price: $"+adultPrice+" per ticket";
-                  document.getElementById("headerText").innerHTML = "<b>Order Summary</b><br><br>Ticket Type Selected: "+ticketType+" Admission<br>";
-                  document.getElementById("headerText").innerHTML += "Date of Visit: "+formatedDate+"<br>Number of Days: "+numDay+"<br>";
+                  document.getElementById("headerText").innerHTML = "<b>Order Summary</b><br><p>Ticket Type Selected: "+ticketType+" Admission</p>";
+                  document.getElementById("headerText").innerHTML += "<p>Date of Visit: "+formatedDate+"</p><p>Number of Days: "+numDay+"</p>";
              }else{
                   document.getElementById("userDateInput").value="";
-                  document.getElementById("headerText").innerHTML = "<b>Order Summary</b><br><br>Ticket Type Selected: "+ticketType+" Admission<br>";
+                  document.getElementById("headerText").innerHTML = "<b>Order Summary</b><br><p>Ticket Type Selected: "+ticketType+" Admission</p>";
              }
 
            }//end of if(dI="")
@@ -314,6 +314,10 @@
             initiateLoading(1500);
             document.getElementById("orderPreSummary").style.display="block";
             document.getElementById("numberTickets").style.display="none";
+            document.getElementById("headerText").innerHTML = "<b>Order Summary</b><br><p>Ticket Type Selected: "+ticketType+" Admission</p>";
+            document.getElementById("headerText").innerHTML += "<p>Date of Visit: "+formatedDate+"</p><p>Number of Days: "+numDay+"</p>";
+            document.getElementById("headerText").innerHTML += "<p>Number of Tickets: "+numAdult+" adult - "+numChild+" child</p>";
+          
         }
       </script>
     
