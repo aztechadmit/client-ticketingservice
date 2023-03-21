@@ -57,7 +57,7 @@ const maxTickNum = 9; //Maximum number of tickets that can be purchased at once
 
     const tier2 = ["March-24","March-29"];
 
-    const tier1 = [];
+    const tier1 = ["March-20", "March-21"];
 
     // Days that are considered week days, 0=sunday, 1=monday, etc.
     const weekdays = [1,2,3,4,5];
