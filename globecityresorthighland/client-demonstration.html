@@ -10,6 +10,7 @@
  
  <!-- Link to necessary scripts -->
  <script src="/scripts/gc-ticketingDataBase.js"></script>
+ <script src="/scripts/gc-priceEstimate.js"></script>
  
  <script> // VARIABLES -----------------------------------------------------------------------------------------------------------
    var numDay = 1; //number of days per multi-day ticket
@@ -17,6 +18,8 @@
    var ticketType; //ticket type selected
    var numAdult;
    var numChild;
+   var adultPrice;
+   var childPrice;
    
  </script><!-- VARIABLES -------------------------------------------------------------------------------------------------------->
  
@@ -168,7 +171,7 @@
       <div class="container"> 
       <br>
       <label>Select the first date of your visit</label><br>
-      <input type="date" id="userDateInput" class="textInput" onChange="alert('date chosen');" onclick="showPicker();"></input>
+      <input type="date" id="userDateInput" class="textInput" onChange="dateChanged();" onclick="showPicker();"></input>
         <p id="estimatedPriceDisplay">Select a date to determine ticket price</p>
         <a href="https://sites.google.com/view/gcresorthighland/backpages/gcap-ticket-tiers"target="_blank">Learn about ticket tiers</a><br><br><br>
      <div class="lineBreak"></div><br>
@@ -178,6 +181,10 @@
 
         <script> 
          window.onresize = checkWidth; 
+         var previousDateInput = 0;
+           var adultPriceEst;
+           var childPriceEst;
+         
          function checkWidth() { //Check if day selector needs to move to new line
            if(window.innerWidth < 500){
               document.getElementById("lineBreakerText").innerHTML = "<br>";
@@ -187,13 +194,41 @@
            numDay = document.querySelector('input[name="numberDay"]:checked').value;
            if(numDay == 1) {document.getElementById("dateWarning").innerHTML = "";}
            else {document.getElementById("dateWarning").innerHTML="Multi-Day tickets must be used within <b>60 days</b> of first visit";}
-           //alert("Number of days: "+numDay);
+           dateChanged();
          }
          function goBackToTTS(){
           initiateLoading(100);
           document.getElementById("dateAndNumDay").style.display="none";
           document.getElementById("ticket-type-selection").style.display="block";
          }
+         //The user has inputed a date or changed the number of days
+         function dateChanged() {
+           dateInput = new Date(document.getElementById("userDateInput").value);
+           var today = new Date();
+           var maxDate = maxDateAdvance*(24*60*60*1000);
+           if(dateInput != previousDateInput) {
+             // step 1 - make sure date is not yesterday or beyond
+             previousDateInput = dateInput;
+             if (dateInput < today) {
+               document.getElementById("estimatedPriceDisplay").innerHTML = "<span style='color:red'>Date cannot be before today</span>";
+             }else if(dateInput - today > maxDate){
+               document.getElementById("estimatedPriceDisplay").innerHTML = "<span style='color:red'>Selected date must be within "+maxDateAdvance+" days of today"</span>";
+             }else{
+               adultPriceEst = 100;
+               childPriceEst = 90;
+             }
+            
+            
+           }else if(adultPriceEst != 0){//if date was not changed, then the number of days was changed. But also make sure the price is not 0
+             adultPrice = adultPriceEst - ((numDay-1)*mutiDayDiscount);
+             childPrice = childPriceEst - ((numDay-1)*mutiDayDiscount);
+           }
+          
+          document.getElementById("estimatedPriceDisplay").innerHTML = "Estimated Price: <b>"+adultPrice+"</b> per ticket";
+          document.getElementById("headerText").innerHTML = "<b>Order Summary</b><br><br>Ticket Type Selected: "+ticketType+" Admission<br>";
+          document.getElementById("headerText").innerHTML += "Date Selected: "+dateInput.getMonth()+"-"+dateInput.getDay()+"-"+dateInput.getFullYear()+"<br>";
+          
+         }//end of function dateChanged
         </script>
 
      <br>
