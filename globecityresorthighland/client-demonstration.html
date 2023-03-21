@@ -206,18 +206,24 @@
          function dateChanged() {
            // alert("Date Inputted: "+document.getElementById("userDateInput").value+"\nNumber Days: "+numDay+"\nMax Days: "+maxDateAdvance);
            dateInput = document.getElementById("userDateInput").value;
-           var prices = dateWasInputed(dateInput, "estimatedPriceDisplay");
-           if(prices != "false"){ //if false is returned, then there was an error computing the date
-             adultPrice = prices[0];
-             childPrice = prices[1];
-             var formatedDate = prices[2];
-             document.getElementById("headerText").innerHTML = "<b>Order Summary</b><br><br>Ticket Type Selected: "+ticketType+" Admission<br>";
-             document.getElementById("headerText").innerHTML += "Date of Visit: "+formatedDate;
-           }else{
-             document.getElementById("userDateInput").value="";
-             document.getElementById("headerText").innerHTML = "<b>Order Summary</b><br><br>Ticket Type Selected: "+ticketType+" Admission<br>";
-           }
-           
+          
+           if(dateInput != ""){
+            
+             var prices = dateWasInputed(dateInput, "estimatedPriceDisplay");
+            
+             if(prices != "false"){ //if false is returned, then there was an error computing the date
+                  adultPrice = prices[0];
+                  childPrice = prices[1];
+                  var formatedDate = prices[2];
+                  document.getElementById("headerText").innerHTML = "<b>Order Summary</b><br><br>Ticket Type Selected: "+ticketType+" Admission<br>";
+                  document.getElementById("headerText").innerHTML += "Date of Visit: "+formatedDate;
+             }else{
+                  document.getElementById("userDateInput").value="";
+                  document.getElementById("headerText").innerHTML = "<b>Order Summary</b><br><br>Ticket Type Selected: "+ticketType+" Admission<br>";
+             }
+
+           }//end of if(dI="")
+
            
          }//end of function dateChanged
          
