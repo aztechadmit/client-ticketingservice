@@ -30,6 +30,7 @@ function dateWasInputed(dateIn, dispName) {
 			
 			//Date is good to go!
 			var prices = determinePrice(dateIn);//determine the price of tickets
+			document.getElementById(dispName).innerHTML = "Estimated price: $"+prices[0]+" per ticket";
 			return prices;
 			
 			
