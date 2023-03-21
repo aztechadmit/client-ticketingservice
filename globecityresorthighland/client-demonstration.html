@@ -212,8 +212,8 @@
              var prices = dateWasInputed(dateInput, "estimatedPriceDisplay");
             
              if(prices != "false"){ //if false is returned, then there was an error computing the date
-                  adultPrice = prices[0];
-                  childPrice = prices[1];
+                  adultPrice = prices[0] - ((numDay-1)*mutiDayDiscount);
+                  childPrice = prices[1] - ((numDay-1)*mutiDayDiscount);
                   var formatedDate = prices[2];
                   document.getElementById("headerText").innerHTML = "<b>Order Summary</b><br><br>Ticket Type Selected: "+ticketType+" Admission<br>";
                   document.getElementById("headerText").innerHTML += "Date of Visit: "+formatedDate;
