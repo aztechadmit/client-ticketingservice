@@ -314,8 +314,8 @@
             initiateLoading(1500);
             document.getElementById("orderPreSummary").style.display="block";
             document.getElementById("numberTickets").style.display="none";
-            document.getElementById("headerText").innerHTML = "<b>Order Summary</b><br><p>Ticket Type Selected: "+ticketType+" Admission</p>";
-            document.getElementById("headerText").innerHTML += "<p>Date of Visit: "+formatedDate+"</p><p>Number of Days: "+numDay+"</p>";
+             document.getElementById("headerText").innerHTML = "<b>Order Summary</b><br><p>Ticket Type Selected: "+ticketType+" Admission</p>";
+                  document.getElementById("headerText").innerHTML += "<p>Date of Visit: "+formatedDate+"</p><p>Number of Days: "+numDay+"</p>";
             document.getElementById("headerText").innerHTML += "<p>Number of Tickets: "+numAdult+" adult - "+numChild+" child</p>";
           
         }
@@ -326,7 +326,7 @@
    </div> <!-- END OF NUM OF TIK ------------------------------------------------------------------------------------------------------------------>
   
    <div id="orderPreSummary" style="display:none"> <!-- ORDER SUMMARY ------------------------------------------------------------------------------------------------------------------>
-    <div id="container">
+    <div class="container">
      <p>This is where your entire order will be summarized before continuing to checkout. Once checkout is initiated, the user will not be able to change their order.</p>
      
      
