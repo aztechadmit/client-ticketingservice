@@ -16,8 +16,8 @@
    var numDay = 1; //number of days per multi-day ticket
    var dateInput; //guests choice of date
    var ticketType; //ticket type selected
-   var numAdult;
-   var numChild;
+   var numAdult = 1;
+   var numChild = 0;
    var adultPrice;
    var childPrice;
   
@@ -218,7 +218,7 @@
               
                   document.getElementById("estimatedPriceDisplay").innerHTML = "Estimated price: $"+adultPrice+" per ticket";
                   document.getElementById("headerText").innerHTML = "<b>Order Summary</b><br><br>Ticket Type Selected: "+ticketType+" Admission<br>";
-                  document.getElementById("headerText").innerHTML += "Date of Visit: "+formatedDate;
+                  document.getElementById("headerText").innerHTML += "Date of Visit: "+formatedDate+"<br>Number of Days: "+numDay+"<br>";
              }else{
                   document.getElementById("userDateInput").value="";
                   document.getElementById("headerText").innerHTML = "<b>Order Summary</b><br><br>Ticket Type Selected: "+ticketType+" Admission<br>";
@@ -241,8 +241,11 @@
           if(document.getElementById("userDateInput").value == ""){
            document.getElementById("estimatedPriceDisplay").innerHTML = "<span style='color:red'>Please select a date of your first visit.</span>";
           }else{
-           initiateLoading(4000);
+           initiateLoading(1000);
            document.getElementById("dateAndNumDay").style.display="none";
+           document.getElementById("numberTickets").style.display="block";
+           document.getElementById("adPDisp").innerHTML = "$"+adultPrice+" each";
+           document.getElementById("chPDisp").innerHTML = "$"+childPrice+" each";
                }
          }//end of function dateSelectionNext
        </script> 
@@ -250,6 +253,62 @@
  
       </div><br> <!-- end of date selection --.---------------------------------------------------------------------------------------------------->
 
+   <div id="numberTickets" style="display:none;"> <!-- NUMBER OF TICKETS ------------------------------------------------------------------------------------------------------->
+      <div class="container" style="text-align:left;background:#073073;color:white;">
+        <img style="width:50px;height:50px;left:5px;vertical-align:middle;" src="clientImages/num3.png"/><span style="margin-left:10px;font-size:20px;">Number of Guests</span>
+      </div>
+    
+      <div class="container">
+       <label>Select the Number of Guests in Your Party</label>
+       <p style="font-size:12px;">Add up to 9 tickets. To purchase 10 or more tickets, <a href="https://docs.google.com/forms/d/e/1FAIpQLSd17fyh_09ZrLAaOUM3GZH1k_yFaDQ-liBFBKm7cuV9w2sAyA/viewform">click here</a></p>
+       <br>
+        <div class="inLineContainer"> <!--Adults-->
+          Adult<br><br>
+          <button class="actionButton" onclick="addt(1);">+</button>
+          <span style="font-size:20px;font-weight:bold;" id="adDis">1</span>
+          <button class="actionButton" onclick="subt(1);">-</button>
+         <br><p id="adPDisp">$00.00 Each</p><br>
+        </div>
+        <div class="inLineContainer"> <!--Child-->
+          Child<br><br>
+          <button class="actionButton" onclick="addt(2);">+</button>
+          <span style="font-size:20px;font-weight:bold;"id="chDis">0</span>
+          <button class="actionButton" onclick="subt(2);">-</button>
+          <br><p id="chPDisp">$00.00 Each</p><br>
+          <br>
+        </div>
+      </div>
+    
+      <script>
+        function addt(ty){
+           if(ty==1){
+            if((numAdult + numChild) < 9) {numAdult += 1; document.getElementById("adDis").innerHTML = numAdult;}
+           }
+           else if(ty==2){
+            if((numAdult + numChild) < 9) {numChild += 1; document.getElementById("chDis").innerHTML = numChild;}
+           }
+        }//addFunc
+        function subt(ty){
+           if(ty==1){
+             if(numAdult > 1) {numAdult -= 1; document.getElementById("adDis").innerHTML = numAdult;}
+           }
+           else if(ty==2){
+             if(numChild > 0) {numChild -= 1; document.getElementById("chDis").innerHTML = numChild;}
+           }
+        }//subFunc
+       
+        function BTDates() {
+           initiateLoading(200);
+           document.getElementById("dateAndNumDay").style.display="block";
+           document.getElementById("numberTickets").style.display="none";
+         
+        }
+      </script>
+    
+    <button class="backButton" onclick="BTDates();">Previous</button><button class="submitButton" onclick="initiateLoading(10000);">Next</button>
+    
+   </div> <!-- END OF NUM OF TIK -->
+  
   
    <div class="container">
      <button class="submitButton" onclick="window.location.href='../index.html';">Go Back to Index</button>
