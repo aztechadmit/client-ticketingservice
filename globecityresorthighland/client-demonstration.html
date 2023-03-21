@@ -154,7 +154,7 @@
       
       
       
-    </div><br> <!-- end of ticket type selection -------------------------------------------------------------------------------------------------------------->
+    </div> <!-- end of ticket type selection -------------------------------------------------------------------------------------------------------------->
 
  
  
@@ -251,7 +251,14 @@
        </script> 
      </div>
  
-      </div><br> <!-- end of date selection --.---------------------------------------------------------------------------------------------------->
+      </div> <!-- end of date selection --.---------------------------------------------------------------------------------------------------->
+  
+  
+  
+  
+  
+  
+  
 
    <div id="numberTickets" style="display:none;"> <!-- NUMBER OF TICKETS ------------------------------------------------------------------------------------------------------->
       <div class="container" style="text-align:left;background:#073073;color:white;">
@@ -264,19 +271,21 @@
        
         <div class="inLineContainer"> <!--Adults-->
           <br>Adult<br><br>
-          <button class="actionButton" onclick="addt(1);">+</button>
-          &nbsp;&nbsp;<span style="font-size:20px;font-weight:bold;" id="adDis">1</span>&nbsp;&nbsp;
           <button class="actionButton" onclick="subt(1);">-</button>
+          &nbsp;&nbsp;<span style="font-size:20px;font-weight:bold;" id="adDis">1</span>&nbsp;&nbsp;
+          <button class="actionButton" onclick="addt(1);">+</button>
          <br><p id="adPDisp">$00.00 Each</p><br>
         </div>
         <div class="inLineContainer"> <!--Child-->
           <br>Child<br><br>
-          <button class="actionButton" onclick="addt(2);">+</button>
-          &nbsp;&nbsp;<span style="font-size:20px;font-weight:bold;"id="chDis">0</span>&nbsp;&nbsp;
           <button class="actionButton" onclick="subt(2);">-</button>
+          &nbsp;&nbsp;<span style="font-size:20px;font-weight:bold;"id="chDis">0</span>&nbsp;&nbsp;
+          <button class="actionButton" onclick="addt(2);">+</button>
           <br><p id="chPDisp">$00.00 Each</p><br>
         </div>
-      </div>
+      
+    
+      <br> <button class="backButton" onclick="BTDates();">Previous</button><button class="submitButton" onclick="initiateLoading(10000);">Next</button>
     
       <script>
         function addt(ty){
@@ -304,13 +313,13 @@
         }
       </script>
     
-    <button class="backButton" onclick="BTDates();">Previous</button><button class="submitButton" onclick="initiateLoading(10000);">Next</button>
+    </div> <!-- end of contaner -->
     
-   </div> <!-- END OF NUM OF TIK -->
+   </div> <!-- END OF NUM OF TIK ------------------------------------------------------------------------------------------------------------------>
   
   
-   <div class="container">
-     <button class="submitButton" onclick="window.location.href='../index.html';">Go Back to Index</button>
+   <br><div class="container">
+    <button class="backButton" onclick="reload();">Reload Page</button> <button class="submitButton" onclick="window.location.href='../index.html';">Go Back to Index</button>
    </div>
 
   <br><br>
