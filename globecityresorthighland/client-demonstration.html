@@ -20,9 +20,6 @@
    var numChild;
    var adultPrice;
    var childPrice;
-   
-  alert("Max Date Advance: "+maxDateAdvance);
-  alert("Multi-Day Discount: "+multiDayDiscount);
   
  </script><!-- VARIABLES -------------------------------------------------------------------------------------------------------->
  
@@ -207,14 +204,7 @@
          
          //The user has inputed a date or changed the number of days
          function dateChanged() {
-           dateInput = new Date(document.getElementById("userDateInput").value);
-           var today = new Date();
-           var maxDate = maxDateAdvance*(24*60*60*1000);
-           
-          
-          document.getElementById("headerText").innerHTML = "<b>Order Summary</b><br><br>Ticket Type Selected: "+ticketType+" Admission<br>";
-          document.getElementById("headerText").innerHTML += "Date Selected: "+dateInput.getMonth()+"-"+dateInput.getDay()+"-"+dateInput.getFullYear()+"<br>";
-          
+           alert("Date Inputted: "+document.getElementById("userDateInput").value+"\nNumber Days: "+numDay);
          }//end of function dateChanged
          
         </script>
