@@ -9,8 +9,8 @@
  </head>
  
  <!-- Link to necessary scripts -->
- <script src="/scripts/gc-ticketingDataBase.js"></script>
- <script src="/scripts/gc-priceEstimate.js"></script>
+ <script src="scripts/gc-ticketingDataBase.js"></script>
+ <script src="scripts/gc-priceEstimate.js"></script>
  
  <script> // VARIABLES -----------------------------------------------------------------------------------------------------------
    var numDay = 1; //number of days per multi-day ticket
@@ -204,7 +204,7 @@
          
          //The user has inputed a date or changed the number of days
          function dateChanged() {
-           alert("Date Inputted: "+document.getElementById("userDateInput").value+"\nNumber Days: "+numDay);
+           alert("Date Inputted: "+document.getElementById("userDateInput").value+"\nNumber Days: "+numDay+"\nMax Days: "+maxDateAdvance);
          }//end of function dateChanged
          
         </script>
