@@ -215,6 +215,8 @@
                   adultPrice = prices[0] - ((numDay-1)*mutiDayDiscount);
                   childPrice = prices[1] - ((numDay-1)*mutiDayDiscount);
                   var formatedDate = prices[2];
+              
+                  document.getElementById("estimatedPriceDisplay").innerHTML = "Estimated price: $"+adultPrice+" per ticket";
                   document.getElementById("headerText").innerHTML = "<b>Order Summary</b><br><br>Ticket Type Selected: "+ticketType+" Admission<br>";
                   document.getElementById("headerText").innerHTML += "Date of Visit: "+formatedDate;
              }else{
