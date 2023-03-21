@@ -285,7 +285,7 @@
         </div>
       
     
-      <br> <button class="backButton" onclick="BTDates();">Previous</button><button class="submitButton" onclick="initiateLoading(10000);">Next</button>
+      <br> <button class="backButton" onclick="BTDates();">Previous</button><button class="submitButton" onclick="nxtNum();">Next</button>
     
       <script>
         function addt(ty){
@@ -309,7 +309,11 @@
            initiateLoading(200);
            document.getElementById("dateAndNumDay").style.display="block";
            document.getElementById("numberTickets").style.display="none";
-         
+        }
+        function nxtNum() {
+            initiateLoading(1500);
+            document.getElementById("orderPreSummary").style.display="block";
+            document.getElementById("numberTickets").style.display="none";
         }
       </script>
     
@@ -317,9 +321,30 @@
     
    </div> <!-- END OF NUM OF TIK ------------------------------------------------------------------------------------------------------------------>
   
+   <div id="orderPreSummary" style="display:none"> <!-- ORDER SUMMARY ------------------------------------------------------------------------------------------------------------------>
+    <div id="container">
+     <p>This is where your entire order will be summarized before continuing to checkout. Once checkout is initiated, the user will not be able to change their order.</p>
+     
+     
+     
+    </div>
+   </div> <!-- END OF NUM OF ORDER SUMMARY ------------------------------------------------------------------------------------------------------------------>
+  
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
    <br><div class="container">
-    <button class="backButton" onclick="reload();">Reload Page</button> <button class="submitButton" onclick="window.location.href='../index.html';">Go Back to Index</button>
+    <button class="backButton" onclick="location.reload();">Reload Page</button> <button class="submitButton" onclick="window.location.href='../index.html';">Go Back to Index</button>
    </div>
 
   <br><br>
