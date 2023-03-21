@@ -213,7 +213,7 @@
              if (dateInput.getTime() < today.getTime()) {
                document.getElementById("estimatedPriceDisplay").innerHTML = "<span style='color:red'>Date cannot be before today</span>";
              }else if(dateInput.getTime() - today.getTime() > maxDate){
-               document.getElementById("estimatedPriceDisplay").innerHTML = "<span style='color:red'>Selected date must be within "+maxDateAdvance+" days of today"</span>";
+               document.getElementById("estimatedPriceDisplay").innerHTML = "<span style='color:red'>Selected date must be within "+maxDateAdvance+" days of today</span>";
              }else{
                adultPriceEst = 100;
                childPriceEst = 90;
