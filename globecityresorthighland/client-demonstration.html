@@ -194,13 +194,14 @@
            numDay = document.querySelector('input[name="numberDay"]:checked').value;
            if(numDay == 1) {document.getElementById("dateWarning").innerHTML = "";}
            else {document.getElementById("dateWarning").innerHTML="Multi-Day tickets must be used within <b>60 days</b> of first visit";}
-           dateChanged();
+           if(document.getElementById("userDateInput").value != 0){dateChanged();}//update ticket price if there is a date inputed
          }
          function goBackToTTS(){
           initiateLoading(100);
           document.getElementById("dateAndNumDay").style.display="none";
           document.getElementById("ticket-type-selection").style.display="block";
          }
+         
          //The user has inputed a date or changed the number of days
          function dateChanged() {
            dateInput = new Date(document.getElementById("userDateInput").value);
@@ -209,9 +210,9 @@
            if(dateInput != previousDateInput) {
              // step 1 - make sure date is not yesterday or beyond
              previousDateInput = dateInput;
-             if (dateInput < today) {
+             if (dateInput.getTime() < today.getTime()) {
                document.getElementById("estimatedPriceDisplay").innerHTML = "<span style='color:red'>Date cannot be before today</span>";
-             }else if(dateInput - today > maxDate){
+             }else if(dateInput.getTime() - today.getTime() > maxDate){
                document.getElementById("estimatedPriceDisplay").innerHTML = "<span style='color:red'>Selected date must be within "+maxDateAdvance+" days of today"</span>";
              }else{
                adultPriceEst = 100;
@@ -229,6 +230,7 @@
           document.getElementById("headerText").innerHTML += "Date Selected: "+dateInput.getMonth()+"-"+dateInput.getDay()+"-"+dateInput.getFullYear()+"<br>";
           
          }//end of function dateChanged
+         
         </script>
 
      <br>
