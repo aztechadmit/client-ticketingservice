@@ -354,15 +354,17 @@
     
  <script> // go to checkout
    function finalCheckOut(){
-    initiateLoading(1000);
+    
     if( confirm("Are you sure you would like to continue?\nOnce the checkout process begins, you will not be able to edit your order."))
     {
+      initiateLoading(1000);
       window.open("gc-portalConfirmation.html", "_self");
     }else{
      return false;
     }
+    
    }
-  </script>
+ </script>
   
   
   
