@@ -74,14 +74,11 @@ body {
 	animation-duration: 0.2s;
 }
 .loadingText {
-	z-index:201;
+    z-index:201;
     text-align:center;
-    position:fixed;
-    top:15vh;
-    margin-top:180px;
-    left:50vw;
-    margin-left:-45px;
-    font-size:20px;
+    position:static;
+    margin-top:40vh;
+    font-size:23px;
 }
 @keyframes spin { /* animates the loading symbol */
   0% { -webkit-transform: rotate(0deg); }
