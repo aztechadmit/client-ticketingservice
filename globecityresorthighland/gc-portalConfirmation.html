@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+ <head> <!-- Basic HTML Page Setup -->
+    <title>Order Complete!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styleMain.css">
+    <link rel="icon" type="image/x-icon" href="../imageMain/webfavicon.ico">
+ </head>
+ 
+ <!-- Link to necessary scripts -->
+  
+  <style>
+    .container {  background-color:#efefef;color:black;    }
+   .headerLogo {  height:50px;width:auto;margin:auto;margin-top:13px;   }
+   .submitButton {background:#07309D;color:white;   }
+   header {	      background:rgba(7,3,157,0.9);   }
+    .headImage {width:90%;height:auto;margin:auto;}
+  </style>
+  
+ <header>  <img src="clientImages/gcResortLogoRemade.png" class="headerLogo"/> </header>
+ 
+ <div id="loadingGroup">
+  <div class="loader" id="loader"></div>
+  <div class="cover" id="cover"></div>
+  <p class="loadingText">Please Wait</p>
+ </div>
+  
+<script> // Loading Animation control
+ var loadTimeOut;
+ function initiateLoading(loadTime){
+            document.getElementById("loadingGroup").style.display="block";
+            document.getElementById("bodyMain").style.display="none";
+            loadTimeOut = setTimeout(showPage, loadTime);
+          }
+  function showPage() {
+            document.getElementById("loadingGroup").style.display="none";
+            document.getElementById("bodyMain").style.display="block";
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+         }
+ </script>
+  
+	<div id="bodyMain" class="bodyMain"> <!-- contains the entire body -->
+		<body style="text-align:center" onload="initiateLoading(100);"> <!-- ------------------------------------------------------------------------------------ BODY -->
+			<div id="spacer" style="height:90px;display:block;"></div> <!-- moves body below the header -->
+			
+			  <div class="container" style="font-size:17px;">
+			      <img class="headImage" src="https://media.giphy.com/media/YSgAZyEj9ndDDXLX9h/giphy-downsized-large.gif">
+			  
+			  </div><br>
+			
+			<div class="container">
+        <p style="font-size:20px;">Order Complete!</p>
+        <p>Thank you! A link to your Adventure Park tickets will be emailed to you shortly.<br>In the meantime, explore Adventure Park online and start getting excited for your upcoming visit!</p>
+        
+      </div>
+			
+			
+			
+			
+			
+			<!-- \/  Bottom of Page elements  \/ -->
+			
+			<br><br><span style="color:gray;font-size:13px;">For best experience, order tickets from your desktop computer</span>
+			
+			<!-- FOOTER ------------------------------------------------------------------------------------------------------------------------------------>
+			<div class="footerSpacer"></div>
+			<footer>
+				<div style="max-width:900px;margin:auto;text-align:left;font-size:12px;font-family: Arial, Helvetica, sans-serif;">
+				<br><div class="lineBreak"></div><br>
+				<em>Powered by Aztech Admit<sup style="font-size:8px;">TM</sup></em> | Secured with <a style="text-decoration:none;"href="https://aztechadmit.github.io/client-ticketingservice/security">Az-Net Digital Security</a>
+				<div style="float:right;"><a href="https://aztechadmit.github.io/client-ticketingservice">About</a> | 
+				<a href="https://aztechadmit.github.io/client-ticketingservice/privacypolicy.html">Privacy Policy</a> | 
+				<a href="https://aztechadmit.github.io/client-ticketingservice">Client Portal</a>
+				</div>
+				<br><br>
+				Software Version 1.100.2 <span style="float:right;color:gray;">©2023 Aztech Technologies LLC.</span></div>
+			</footer>
+			
+		</body> <!-- end of main body -->
+	</div> <!-- end of main body div -->
+  
+</html>
