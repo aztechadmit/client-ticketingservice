@@ -76,9 +76,10 @@ body {
 .loadingText {
     z-index:201;
     text-align:center;
-    position:static;
+    position:fixed;
     margin-top:40vh;
     font-size:23px;
+    min-width:100vw;
 }
 @keyframes spin { /* animates the loading symbol */
   0% { -webkit-transform: rotate(0deg); }
