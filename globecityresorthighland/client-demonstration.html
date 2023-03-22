@@ -341,16 +341,18 @@
      </script>
    
    <div class="container">
-    <label>Resort Parking</label><p>Would you like to add one-day parking to your order? Adding now can save you up to $10 versus at-the-gate parking!</p><br><br>
-    <button class="ticketTypeBtn" onclick="addParking('gen');"><img src="clientImages/ticketing1.jpg" class="ticketingImage"/><p><b>General Parking</b><br>Includes general parking for one standard vehicle in Adventure Parking Lot</p><em>$24 Per Vehicle</em></button>
-    <button class="ticketTypeBtn" onclick="addParking('pri');"><img src="clientImages/ticketing1.jpg" class="ticketingImage"/><p><b>Priority Parking</b><br>Park closer to the main entrance of Adventure Park</p><em>$50</em></button>
-    <button class="ticketTypeBtn" onclick="addParking('ovs');"><img src="clientImages/ticketing1.jpg" class="ticketingImage"/><p><b>Over-size Parking</b><br>Includes parking for one over-size vehicle in Adventre Parking Lot</p><em>$29</em></button><br>
-   </div>
-    
-   <div class="container">
-    <p id="parkingDisplay" style="font-size:22px;"></p><br>
+   <br> <label style="font-size:20px;">Resort Parking</label><p>Would you like to add one-day parking to your order? Adding now can save you up to $10 versus at-the-gate parking!</p>
+    <p style="font-size:12px;"><em>Guests staying in a resort hotel can purchase multi-day parking when booking a room and do not need to add general parking with their tickets.</em></p>
+    <div id="parBtn" style="display:inline;">
+    <button class="ticketTypeBtn" onclick="addParking('gen');"><img src="clientImages/parking1.jpg" class="ticketingImage"/><p><b>General Parking</b><br>Includes general parking for one standard vehicle in Adventure Parking Lot</p><em>$24 Per Vehicle</em></button>
+    <button class="ticketTypeBtn" onclick="addParking('pri');"><img src="clientImages/parking1.jpg" class="ticketingImage"/><p><b>Priority Parking</b><br>Park closer to the main entrance of Adventure Park</p><em>$50 Per Vehicle</em></button>
+    <button class="ticketTypeBtn" onclick="addParking('ovs');"><img src="clientImages/parking1.jpg" class="ticketingImage"/><p><b>Over-Size Parking</b><br>Includes parking for one over-size vehicle in Adventre Parking Lot</p><em>$29 Per Vehicle</em></button><br>
+    </div>
+    <br>
+     <p id="parkingDisplay" style="font-size:22px;"></p><br>
     <button class="backButton" onclick="addParking('rem');" style="display:none;" id="remPar">Remove Parking</button><br>
    </div>
+    
    
    <div class="container">
    <button class="backButton" onclick="BkToNumTik()">Previous</button><button class="submitButton" onclick="toSumFin();">Next</button> <br>
@@ -364,20 +366,24 @@
             var guestParking = "General Parking : $24";
             document.getElementById("parkingDisplay").innerHTML = "One-Day General Parking ($24) added to order!";
             document.getElementById("remPar").style.display = "inline";
+            document.getElementById("parBtn").style.display = "none";
     }else if(partyp=="pri"){
             var guestParking = "Priority Parking : $50";
             document.getElementById("parkingDisplay").innerHTML = "One-Day Priority Parking ($50) added to order!";
             document.getElementById("remPar").style.display = "inline";
+            document.getElementById("parBtn").style.display = "none";
     }
     else if(partyp=="ovs"){
             var guestParking = "Over-size Parking : $30";
             document.getElementById("parkingDisplay").innerHTML = "One-Day Over-size Parking ($30) added to order!";
             document.getElementById("remPar").style.display = "inline";
+            document.getElementById("parBtn").style.display = "none";
     }
     else if(partyp=="rem"){
             var guestParking = "none";
-            document.getElementById("parkingDisplay").innerHTML = "No Parking Selected";
+            document.getElementById("parkingDisplay").innerHTML = "";
             document.getElementById("remPar").style.display = "none";
+            document.getElementById("parBtn").style.display = "inline";
     }
    }//endOfFunctionAddParking
    
