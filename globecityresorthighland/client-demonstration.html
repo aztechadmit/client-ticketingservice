@@ -312,9 +312,9 @@
         function nxtNum() {
             
              //document.getElementById("headerText").innerHTML = "<b>Order Summary</b><br><p>Ticket Type Selected: "+ticketType+" Admission</p>"+"<p>Date of Visit: "+formatedDate+"</p><p>Number of Days: "+numDay+"</p>"+ "<p>Number of Tickets: "+numAdult+" adult - "+numChild+" child</p>";
-             loadSumary();
-             initiateLoading(1500);
-             document.getElementById("orderPreSummary").style.display="block";
+             
+             initiateLoading(10);
+             document.getElementById("addParWin").style.display="block";
              document.getElementById("numberTickets").style.display="none";
           
         }
@@ -325,45 +325,37 @@
    </div> <!-- END OF NUM OF TIK ------------------------------------------------------------------------------------------------------------------>
   
   
-  <div id="orderPreSummary" style="display:none"> <!-- ORDER SUMMARY ------------------------------------------------------------------------------------------------------------------>
+  <div id="addParWin" style="display:none"> <!-- AD ONS (parking) ------------------------------------------------------------------------------------------------------------------>
     
       <div class="container" style="text-align:left;background:#073073;color:white;">
-          <img style="width:50px;height:50px;left:5px;vertical-align:middle;" src="clientImages/num4.png"/><span style="margin-left:10px;font-size:20px;">Order Summary</span>
+          <img style="width:50px;height:50px;left:5px;vertical-align:middle;" src="clientImages/num4.png"/><span style="margin-left:10px;font-size:20px;">Order Add-Ons</span>
         </div>
-  
-   
-   <div class="container">
-     <p>This is where your entire order will be summarized before continuing to checkout. Once checkout is initiated, the user will not be able to change their order.</p>
-     <p id="ordSum"></p>
-     
-     
+
      <script>
        function BkToNumTik() {
              initiateLoading(100);
              document.getElementById("numberTickets").style.display="block";
-             document.getElementById("orderPreSummary").style.display="none";
+             document.getElementById("addParWin").style.display="none";
        }
-       function loadSumary() {
-             document.getElementById("ordSum").innerHTML = "<b>Order Summary</b><p>Line 1</p><p>Line 2</p><p>Line 3</p>";
-       }
+       
      </script>
-     
-    </div>
    
    <div class="container">
     <label>Resort Parking</label><p>Would you like to add one-day parking to your order? Adding now can save you up to $10 versus at-the-gate parking!</p><br><br>
     <button class="ticketTypeBtn" onclick="addParking('gen');"><img src="clientImages/ticketing1.jpg" class="ticketingImage"/><p><b>General Parking</b><br>Includes general parking for one standard vehicle in Adventure Parking Lot</p><em>$24 Per Vehicle</em></button>
     <button class="ticketTypeBtn" onclick="addParking('pri');"><img src="clientImages/ticketing1.jpg" class="ticketingImage"/><p><b>Priority Parking</b><br>Park closer to the main entrance of Adventure Park</p><em>$50</em></button>
     <button class="ticketTypeBtn" onclick="addParking('ovs');"><img src="clientImages/ticketing1.jpg" class="ticketingImage"/><p><b>Over-size Parking</b><br>Includes parking for one over-size vehicle in Adventre Parking Lot</p><em>$29</em></button><br>
-    <button class="backButton" onclick="addParking('rem');" style="display:none;" id="remPar">Remove Parking</button><br>
+   </div>
     
-    <p id="parkingDisplay"></p><br>
+   <div class="container">
+    <p id="parkingDisplay" style="font-size:22px;"></p><br>
+    <button class="backButton" onclick="addParking('rem');" style="display:none;" id="remPar">Remove Parking</button><br>
    </div>
    
    <div class="container">
-    <br> <button class="backButton" onclick="BkToNumTik()">Previous</button><button class="submitButton" onclick="finalCheckOut();">Next</button> <br>
+   <button class="backButton" onclick="BkToNumTik()">Previous</button><button class="submitButton" onclick="toSumFin();">Next</button> <br>
    </div>
-   </div> <!-- END OF NUM OF ORDER SUMMARY ------------------------------------------------------------------------------------------------------------------>
+   </div> <!-- END OF NUM OF ADDONS ------------------------------------------------------------------------------------------------------------------>
   
     
  <script> // go to checkout
@@ -371,16 +363,16 @@
     if(partyp=="gen"){
             var guestParking = "General Parking : $24";
             document.getElementById("parkingDisplay").innerHTML = "One-Day General Parking ($24) added to order!";
-            document.getElementById("remPar").style.display = "block";
+            document.getElementById("remPar").style.display = "inline";
     }else if(partyp=="pri"){
             var guestParking = "Priority Parking : $50";
             document.getElementById("parkingDisplay").innerHTML = "One-Day Priority Parking ($50) added to order!";
-            document.getElementById("remPar").style.display = "block";
+            document.getElementById("remPar").style.display = "inline";
     }
     else if(partyp=="ovs"){
             var guestParking = "Over-size Parking : $30";
             document.getElementById("parkingDisplay").innerHTML = "One-Day Over-size Parking ($30) added to order!";
-            document.getElementById("remPar").style.display = "block";
+            document.getElementById("remPar").style.display = "inline";
     }
     else if(partyp=="rem"){
             var guestParking = "none";
@@ -389,6 +381,44 @@
     }
    }//endOfFunctionAddParking
    
+   function toSumFin(){
+    loadSumary();
+     initiateLoading(1500);
+             document.getElementById("addParWin").style.display="none";
+             document.getElementById("loadSummaryFin").style.display="block";
+   }
+  
+   
+ </script>
+  
+  <div id="loadSummaryFin" style="display:none;"> <!-- --------------------------------- ORDER SUMMARY ---------------------------------------->
+   
+    <div class="container" style="text-align:left;background:#073073;color:white;">
+          <img style="width:50px;height:50px;left:5px;vertical-align:middle;" src="clientImages/num5.png"/><span style="margin-left:10px;font-size:20px;">Order Summary</span>
+        </div>
+  
+   
+   <div class="container">
+     <p>This is where your entire order will be summarized before continuing to checkout. Once checkout is initiated, the user will not be able to change their order.</p>
+     <p id="ordSum"></p>
+    
+     <br>
+    <br> <button class="backButton" onclick="bktoPar();">Previous</button><button class="submitButton" onclick="finalCheckOut();">Next</button> <br>
+    
+   </div>
+   
+  </div> <!-- end of order summary -->
+  
+  <script>
+   function bktoPar(){
+    initiateLoading(10);
+    document.getElementById("addParWin").style.display="block";
+             document.getElementById("loadSummaryFin").style.display="none";
+    
+   }
+   function loadSumary() {
+             document.getElementById("ordSum").innerHTML = "<b>Order Summary</b><p>Line 1</p><p>Line 2</p><p>Line 3</p>";
+       }
    function finalCheckOut(){
     
     if( confirm("Are you sure you would like to continue?\nOnce the checkout process begins, you will not be able to edit your order."))
@@ -400,9 +430,7 @@
     }
     
    }
- </script>
-  
-  
+  </script>
   
   
   
