@@ -335,7 +335,7 @@
    <div class="container">
      <p>This is where your entire order will be summarized before continuing to checkout. Once checkout is initiated, the user will not be able to change their order.</p>
      <p id="ordSum"></p>
-     <br> <button class="backButton" onclick="BkToNumTik()">Previous</button><button class="submitButton" onclick="finalCheckOut();">Next</button>
+     
      
      <script>
        function BkToNumTik() {
@@ -349,10 +349,46 @@
      </script>
      
     </div>
+   
+   <div class="container">
+    <label>Resort Parking</label><p>Would you like to add one-day parking to your order? Adding now can save you up to $10 versus at-the-gate parking!</p><br><br>
+    <button class="ticketTypeBtn" onclick="addParking('gen');"><img src="clientImages/ticketing1.jpg" class="ticketingImage"/><p><b>General Parking</b><br>Includes general parking for one standard vehicle in Adventure Parking Lot</p><em>$24 Per Vehicle</em></button>
+    <button class="ticketTypeBtn" onclick="addParking('pri');"><img src="clientImages/ticketing1.jpg" class="ticketingImage"/><p><b>Priority Parking</b><br>Park closer to the main entrance of Adventure Park</p><em>$50</em></button>
+    <button class="ticketTypeBtn" onclick="addParking('ovs');"><img src="clientImages/ticketing1.jpg" class="ticketingImage"/><p><b>Over-size Parking</b><br>Includes parking for one over-size vehicle in Adventre Parking Lot</p><em>$29</em></button><br>
+    <button class="backButton" onclick="addParking('rem');" style="display:none;" id="remPar">Remove Parking</button><br>
+    
+    <p id="parkingDisplay"></p><br>
+   </div>
+   
+   <div class="container">
+    <br> <button class="backButton" onclick="BkToNumTik()">Previous</button><button class="submitButton" onclick="finalCheckOut();">Next</button> <br>
+   </div>
    </div> <!-- END OF NUM OF ORDER SUMMARY ------------------------------------------------------------------------------------------------------------------>
   
     
  <script> // go to checkout
+   function addParking(partyp){
+    if(partyp=="gen"){
+            var guestParking = "General Parking : $24";
+            document.getElementById("parkingDisplay").innerHTML = "One-Day General Parking ($24) added to order!";
+            document.getElementById("remPar").style.display = "block";
+    }else if(partyp=="pri"){
+            var guestParking = "Priority Parking : $50";
+            document.getElementById("parkingDisplay").innerHTML = "One-Day Priority Parking ($50) added to order!";
+            document.getElementById("remPar").style.display = "block";
+    }
+    else if(partyp=="ovs"){
+            var guestParking = "Over-size Parking : $30";
+            document.getElementById("parkingDisplay").innerHTML = "One-Day Over-size Parking ($30) added to order!";
+            document.getElementById("remPar").style.display = "block";
+    }
+    else if(partyp=="rem"{
+            var guestParking = "none";
+            document.getElementById("parkingDisplay").innerHTML = "No Parking Selected";
+            document.getElementById("remPar").style.display = "none";
+    }
+   }//endOfFunctionAddParking
+   
    function finalCheckOut(){
     
     if( confirm("Are you sure you would like to continue?\nOnce the checkout process begins, you will not be able to edit your order."))
