@@ -13,7 +13,7 @@
   <style>
     .container {  background-color:#efefef;color:black;    }
    .headerLogo {  height:50px;width:auto;margin:auto;margin-top:13px;   }
-   .submitButton {background:#07309D;color:white;   }
+   .backButton {min-width:350px; border:2px solid black; }
    header {	      background:rgba(7,3,157,0.9);   }
     .headImage {width:90%;height:auto;margin:auto;}
   </style>
@@ -45,16 +45,23 @@
 		<body style="text-align:center" onload="initiateLoading(100);"> <!-- ------------------------------------------------------------------------------------ BODY -->
 			<div id="spacer" style="height:90px;display:block;"></div> <!-- moves body below the header -->
 			
+			<div class="container">
+			<b style="font-size:20px;">Order Complete!</b>
+			<p>Thank you! A link to your Adventure Park tickets will be emailed to you shortly.<br></p>
+
+			</div>
+			
 			  <div class="container" style="font-size:17px;">
 			      <img class="headImage" src="https://media.giphy.com/media/YSgAZyEj9ndDDXLX9h/giphy-downsized-large.gif">
-			  
 			  </div><br>
 			
 			<div class="container">
-        <p style="font-size:20px;">Order Complete!</p>
-        <p>Thank you! A link to your Adventure Park tickets will be emailed to you shortly.<br>In the meantime, explore Adventure Park online and start getting excited for your upcoming visit!</p>
-        
-      </div>
+				<p>Your thrilling adventure awaits! <br>Use the links below to explore the Globe-City Resort Highland and begin planning your visit</p>
+				<br>
+				<button class="backButton" onclick='window.location.href="https://sites.google.com/view/gcresorthighland/things-to-do/adventure-park/attractions-and-entertainment"'>Explore Attractions and Entertainment</button> <br><br>
+				<button class="backButton" onclick='window.location.href="https://sites.google.com/view/gcresorthighland/things-to-do/adventure-park/places-to-eat"'>Explore Places to Eat</button> <br><br>
+				<button class="backButton" onclick='window.location.href="https://sites.google.com/view/gcresorthighland/things-to-do/city-shop"'>Explore City-Shop</button> <br><br>
+			</div>
 			
 			
 			
