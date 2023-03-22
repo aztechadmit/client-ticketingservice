@@ -161,7 +161,6 @@
  
  
  
- 
 
     <div id="dateAndNumDay" style="display:none;"> <!-- date selection --.----------------------------------------------------------------------------------------------------------->
      <div class="container" style="text-align:left;background:#073073;color:white;">
@@ -336,7 +335,7 @@
    <div class="container">
      <p>This is where your entire order will be summarized before continuing to checkout. Once checkout is initiated, the user will not be able to change their order.</p>
      <p id="ordSum"></p>
-     <br> <button class="backButton" onclick="BkToNumTik()">Previous</button><button class="submitButton" onclick="window.location.href='gc-portalConfirmation.html';">Next</button>
+     <br> <button class="backButton" onclick="BkToNumTik()">Previous</button><button class="submitButton" onclick="finalCheckOut();">Next</button>
      
      <script>
        function BkToNumTik() {
@@ -353,7 +352,17 @@
    </div> <!-- END OF NUM OF ORDER SUMMARY ------------------------------------------------------------------------------------------------------------------>
   
     
-  
+ <script> // go to checkout
+   function finalCheckOut(){
+    initiateLoading(1000);
+    if( confirm("Are you sure you would like to continue?\nOnce the checkout process begins, you will not be able to edit your order."))
+    {
+      window.open("gc-portalConfirmation.html", "_self");
+    }else{
+     return false;
+    }
+   }
+  </script>
   
   
   
