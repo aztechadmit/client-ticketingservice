@@ -312,7 +312,7 @@
         }
         function nxtNum() {
             
-             document.getElementById("headerText").innerHTML = "<b>Order Summary</b><br><p>Ticket Type Selected: "+ticketType+" Admission</p>"+"<p>Date of Visit: "+formatedDate+"</p><p>Number of Days: "+numDay+"</p>"+ "<p>Number of Tickets: "+numAdult+" adult - "+numChild+" child</p>";
+             //document.getElementById("headerText").innerHTML = "<b>Order Summary</b><br><p>Ticket Type Selected: "+ticketType+" Admission</p>"+"<p>Date of Visit: "+formatedDate+"</p><p>Number of Days: "+numDay+"</p>"+ "<p>Number of Tickets: "+numAdult+" adult - "+numChild+" child</p>";
              loadSumary();
              initiateLoading(1500);
              document.getElementById("orderPreSummary").style.display="block";
@@ -337,7 +337,7 @@
              document.getElementById("numberTickets").style.display="block";
              document.getElementById("orderPreSummary").style.display="none";
        }
-       function loadSumary(){
+       function loadSumary() {
              document.getElementById("ordSum").innerHTML = "<b>Order Summary</b><p>Line 1</p><p>Line 2</p><p>Line 3</p>";
        }
      </script>
