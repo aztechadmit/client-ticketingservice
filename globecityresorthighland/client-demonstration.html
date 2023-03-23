@@ -447,9 +447,9 @@
        }
    function finalCheckOut(){
     
-    if( confirm("Are you sure you would like to continue?\nOnce the checkout process begins, you will not be able to edit your order."))
+    if( confirm("Are you sure you would like to continue?\nOnce the checkout process begins, you will not be able to edit your order.\n\nOrder Subtotal: $"+ordSubtotal))
     {
-      initiateLoading(1000);
+      document.getElementById("loadingGroup").style.display="block";
       window.open("gc-portalConfirmation.html", "_self");
     }else{
      return false;
