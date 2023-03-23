@@ -416,7 +416,7 @@
   
    
    <div class="container">
-     <p id="ordSum"></p>
+     <p id="ordSum" style='font-size:19px;'></p>
     
     <br><div class="lineBreak"></div><br>
     
@@ -442,15 +442,16 @@
     
     var ordSubtotal = ((numAdult*adultPrice)+(numChild*childPrice))*numDay + addOnPrice;
     
-           var ordSumStr = "<b>"+ticketType+" Admission</b>";
+           var ordSumStr = "<b style='font-size:19px;'>"+ticketType+" Admission</b>";
                ordSumStr += "<p>Visiting on "+"DATE"+"</p><br>";
-               ordSumStr += "<p>"+numAdult+" Adult @ $"+adultPrice+" each</p>";
-               ordSumStr += "<p>"+numChild+" Child @ $"+childPrice+" each</p><br>";
+               ordSumStr += "<p style='font-size:19px;'>"+numAdult+" Adult @ $"+adultPrice+" each</p>";
+               ordSumStr += "<p style='font-size:19px;'>"+numChild+" Child @ $"+childPrice+" each</p><br>";
                ordSumStr += "<p>Visiting for "+numDay+" days</p>";
                ordSumStr += "<p>Add-Ons: "+guestParking+"</p>";
     
            document.getElementById("ordSum").innerHTML = ordSumStr;
            document.getElementById("ordSumTot").innerHTML = "Order Subtotal: $"+ordSubtotal;
+            document.getElementById("headerText").innerHTML = "Your adventure is one more step way!";
              
              
     
