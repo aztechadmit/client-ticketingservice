@@ -144,10 +144,10 @@
             document.getElementById("userDateInput").value = "";
             document.getElementById("estimatedPriceDisplay").innerHTML = "";
             previousTicketType = ticketType;
-            loadNextTime = 2000;
-          }else{loadNextTime=800;}
+            loadNextTime = 2000;document.getElementById("ldtxt").innerHTML = "Please Wait"; 
+          }else{loadNextTime=800;document.getElementById("ldtxt").innerHTML = "Downloading Ticket Information"; }
          
-          document.getElementById("ldtxt").innerHTML = "Please Wait"; 
+          
           initiateLoading(loadNextTime);
           
         }//end of tikTypeNext
@@ -246,6 +246,7 @@
            initiateLoading(1000);
            document.getElementById("dateAndNumDay").style.display="none";
            document.getElementById("numberTickets").style.display="block";
+           document.getElementById("ldtxt").innerHTML = "Please Wait"; 
            document.getElementById("adPDisp").innerHTML = "$"+adultPrice+" each";
            document.getElementById("chPDisp").innerHTML = "$"+childPrice+" each";
                }
@@ -405,6 +406,7 @@
    function toSumFin(){
     loadSumary();
      initiateLoading(4000);
+             document.getElementById("ldtxt").innerHTML = "Summarizing Order"; 
              document.getElementById("addParWin").style.display="none";
              document.getElementById("loadSummaryFin").style.display="block";
    }
@@ -424,12 +426,12 @@
     
     <br><div class="lineBreak"></div><br>
     
-    <p id="ordSumTot" style="font-weight:bold;">Order subtotal: $00.00</p>
+    <p id="ordSumTot" style="font-weight:bold;font-size:21px;">Order subtotal: $00.00</p>
     
      <br>
     <br> <button class="backButton" onclick="bktoPar();">Previous</button><button class="submitButton" onclick="finalCheckOut();">Next</button> <br>
     
-    <button class="submitButton" onclick="runVariableTest();">Run Variable Test</button>
+   <!-- <button class="submitButton" onclick="runVariableTest();">Run Variable Test</button> -->
     
    </div>
    
@@ -462,9 +464,18 @@
        }
    function finalCheckOut(){
     
-    if( confirm("Are you sure you would like to continue?\nOnce the checkout process begins, you will not be able to edit your order.\n\nOrder Subtotal: $"+"COULD NOT COLLECT"))
+    var confirmst = "Are you sure you would like to continue?";
+        confirmst += "\n\nOnce the checkout process begins, you will be unable to edit your order. Please review final details before continuing to final step.";
+        confirmst += "\n\nTicket Type: "+ticketType;
+        var numSum = numAdult + numChild;
+        confirmst += "\nNumber of Tickets: "+(numSum);
+        confirmst += "\nOrder Subtotal (before taxes and fees): $"+ordSubtotal;
+    
+    if( confirm(confirmst))
     {
+      document.getElementById("ldtxt").innerHTML = "Finalizing Order"; 
       document.getElementById("loadingGroup").style.display="block";
+      
       window.open("gc-portalConfirmation.html", "_self");
     }else{
      return false;
