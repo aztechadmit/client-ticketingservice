@@ -144,8 +144,8 @@
             document.getElementById("userDateInput").value = "";
             document.getElementById("estimatedPriceDisplay").innerHTML = "";
             previousTicketType = ticketType;
-            loadNextTime = 2000;document.getElementById("ldtxt").innerHTML = "Please Wait"; 
-          }else{loadNextTime=800;document.getElementById("ldtxt").innerHTML = "Downloading Ticket Information"; }
+            loadNextTime = 2000; document.getElementById("ldtxt").innerHTML = "Downloading Ticket Pricing"; 
+          }else{loadNextTime=800; document.getElementById("ldtxt").innerHTML = "Please Wait"; }
          
           
           initiateLoading(loadNextTime);
@@ -347,7 +347,7 @@
    <div class="container">
    <br> <label style="font-size:20px;">Resort Parking</label><p>Would you like to add one-day parking to your order? Adding now can save you up to $10 versus at-the-gate parking!</p>
     <p style="font-size:12px;"><em>Guests staying in a resort hotel can purchase multi-day parking when booking a room and do not need to add general parking with their tickets.</em></p>
-    <div id="parBtn" style="display:inline;">
+    <div id="parBtn" style="display:inline;" class="addOnContainer">
     <button class="ticketTypeBtn" onclick="addParking('gen');"><img src="clientImages/parking1.jpg" class="ticketingImage"/><p><b>General Parking</b><br>Includes general parking for one standard vehicle in Adventure Parking Lot</p><em>$24 Per Vehicle</em></button>
     <button class="ticketTypeBtn" onclick="addParking('pri');"><img src="clientImages/parking1.jpg" class="ticketingImage"/><p><b>Priority Parking</b><br>Park closer to the main entrance of Adventure Park</p><em>$50 Per Vehicle</em></button>
     <button class="ticketTypeBtn" onclick="addParking('ovs');"><img src="clientImages/parking1.jpg" class="ticketingImage"/><p><b>Over-Size Parking</b><br>Includes parking for one over-size vehicle in Adventre Parking Lot</p><em>$29 Per Vehicle</em></button><br>
@@ -468,20 +468,20 @@
         confirmst += "\n\nOnce the checkout process begins, you will be unable to edit your order. Please review final details before continuing to final step.";
         confirmst += "\n\nTicket Type: "+ticketType;
         var numSum = numAdult + numChild;
-        confirmst += "\nNumber of Tickets: "+(numSum);
+        confirmst += "\nNumber of Tickets: "+numSum;
         confirmst += "\nOrder Subtotal (before taxes and fees): $"+ordSubtotal;
     
-    if( confirm(confirmst))
+    if( confirm(confirmst) )
     {
       document.getElementById("ldtxt").innerHTML = "Finalizing Order"; 
       document.getElementById("loadingGroup").style.display="block";
-      
       window.open("gc-portalConfirmation.html", "_self");
+     
     }else{
      return false;
     }
     
-   }
+   }//end of final checkout
   </script>
   
   <script>
