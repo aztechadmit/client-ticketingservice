@@ -50,7 +50,7 @@
  <div id="loadingGroup">
   <div class="loader" id="loader"></div>
   <div class="cover" id="cover"></div>
-  <p class="loadingText">Please Wait</p>
+  <p class="loadingText" id="ldtxt">Loading Ticketing Portal</p>
  </div>
  <script> // Loading Animation control
  var loadTimeOut;
@@ -70,7 +70,7 @@
  </script>
 
  <div id="bodyMain" class="bodyMain">
-<body style="text-align:center" onload="initiateLoading(1000);"> <!-- ------------------------------------------------------------------------------------ BODY -->
+<body style="text-align:center" onload="initiateLoading(6000);"> <!-- ------------------------------------------------------------------------------------ BODY -->
  
  <div id="spacer" style="height:90px;display:block;"></div>
  
@@ -147,8 +147,11 @@
             loadNextTime = 2000;
           }else{loadNextTime=800;}
          
+         `document.getElementById("ldtxt").innerHTML = "Please Wait"; 
           initiateLoading(loadNextTime);
+          
         }//end of tikTypeNext
+        
       </script><!-- end of ticket type processing -->
       
       
