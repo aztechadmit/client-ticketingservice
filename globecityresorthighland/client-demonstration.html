@@ -364,23 +364,27 @@
    function addParking(partyp){
     if(partyp=="gen"){
             var guestParking = "General Parking : $24";
+            var addOnPrice = 24;
             document.getElementById("parkingDisplay").innerHTML = "One-Day General Parking ($24) added to order!";
             document.getElementById("remPar").style.display = "inline";
             document.getElementById("parBtn").style.display = "none";
     }else if(partyp=="pri"){
             var guestParking = "Priority Parking : $50";
+            var addOnPrice = 50;
             document.getElementById("parkingDisplay").innerHTML = "One-Day Priority Parking ($50) added to order!";
             document.getElementById("remPar").style.display = "inline";
             document.getElementById("parBtn").style.display = "none";
     }
     else if(partyp=="ovs"){
-            var guestParking = "Over-size Parking : $30";
+            var guestParking = "Over-size Parking : $29";
+            var addOnPrice = 29;
             document.getElementById("parkingDisplay").innerHTML = "One-Day Over-size Parking ($30) added to order!";
             document.getElementById("remPar").style.display = "inline";
             document.getElementById("parBtn").style.display = "none";
     }
     else if(partyp=="rem"){
             var guestParking = "none";
+            var addOnPrice = 0;
             document.getElementById("parkingDisplay").innerHTML = "";
             document.getElementById("remPar").style.display = "none";
             document.getElementById("parBtn").style.display = "inline";
@@ -405,8 +409,11 @@
   
    
    <div class="container">
-     <p>This is where your entire order will be summarized before continuing to checkout. Once checkout is initiated, the user will not be able to change their order.</p>
      <p id="ordSum"></p>
+    
+    <br><div class="lineBreak"></div><br>
+    
+    <p id="ordSumTot" style="font-weight:bold;">Order subtotal: $00.00</p>
     
      <br>
     <br> <button class="backButton" onclick="bktoPar();">Previous</button><button class="submitButton" onclick="finalCheckOut();">Next</button> <br>
@@ -423,7 +430,20 @@
     
    }
    function loadSumary() {
-             document.getElementById("ordSum").innerHTML = "<b>Order Summary</b><p>Line 1</p><p>Line 2</p><p>Line 3</p>";
+    
+    ordSubtotal = ((numAdult*adultPrice)+(numChild+childPrice))*numDay + addOnPrice;
+    
+           var ordSumStr = "<b>"+ticketType+" Admission</b>";
+               ordSumStr += "<p>Visiting on "+formatedDate+"</p><br>";
+               ordSumStr += "<p>"+numAdult+" Adult @ $"+adultPrice+" each</p>";
+               ordSumStr += "<p>"+numChild+" Child @ $"+childPrice+" each</p><br>";
+               ordSumStr += "<p>Visiting for "+numDay+" days</p>";
+               ordSumStr += "<p>Add-Ons: "+guestParking+"</p>";
+    
+           document.getElementById("ordSum").innerHTML = ordSumStr;
+           document.getElementById("ordSumTot").innerHTML = "Order Subtotal: $"+ordSubtotal;
+             
+    
        }
    function finalCheckOut(){
     
