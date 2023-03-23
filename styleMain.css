@@ -202,6 +202,6 @@ body {
 
 .addOnContainer{
 	scale:1 1;
-	transition:scale 0.4s;
+	transition:transform 0.4s;
 }
 
