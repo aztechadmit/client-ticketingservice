@@ -396,11 +396,11 @@
             document.getElementById("parkingDisplay").innerHTML = "";
             document.getElementById("remPar").style.display = "none";
             document.getElementById("parBtn").style.display = "inline";
-            document.getElementById("parBtn").style.scale = 1;
+            document.getElementById("parBtn").style.opacity = 1;
     }
    }//endOfFunctionAddParking
    function hideAddOn() {
-    document.getElementById("parBtn").style.scale = 0%;
+    document.getElementById("parBtn").style.opacity = 0;
     setTimeout(function(){ document.getElementById("parBtn").style.display = "none"; }, 400);
    }
    function toSumFin(){
@@ -464,14 +464,14 @@
        }
    function finalCheckOut(){
     
-    var confirmst = "Are you sure you would like to continue?";
+    /* var confirmst = "Are you sure you would like to continue?";
         confirmst += "\n\nOnce the checkout process begins, you will be unable to edit your order. Please review final details before continuing to final step.";
-        confirmst += "\n\nTicket Type: "+ticketType.toString();
+        confirmst += "\n\nTicket Type: "+ticketType;
         var numSum = numAdult + numChild;
         confirmst += "\nNumber of Tickets: "+numSum.toString();
-        confirmst += "\nOrder Subtotal (before taxes and fees): $"+ordSubtotal.toString();
+        confirmst += "\nOrder Subtotal (before taxes and fees): $"+ordSubtotal.toString(); */
     
-    if(confirm(confirmst))
+    if(confirm("Are you sure you would like to continue?\n\nOnce Checkout begins, you will not be able to edit your order."))
     {
       document.getElementById("ldtxt").innerHTML = "Finalizing Order"; 
       document.getElementById("loadingGroup").style.display="block";
