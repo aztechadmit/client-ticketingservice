@@ -466,12 +466,12 @@
     
     var confirmst = "Are you sure you would like to continue?";
         confirmst += "\n\nOnce the checkout process begins, you will be unable to edit your order. Please review final details before continuing to final step.";
-        confirmst += "\n\nTicket Type: "+ticketType;
+        confirmst += "\n\nTicket Type: "+ticketType.toString();
         var numSum = numAdult + numChild;
-        confirmst += "\nNumber of Tickets: "+numSum;
-        confirmst += "\nOrder Subtotal (before taxes and fees): $"+ordSubtotal;
+        confirmst += "\nNumber of Tickets: "+numSum.toString();
+        confirmst += "\nOrder Subtotal (before taxes and fees): $"+ordSubtotal.toString();
     
-    if( confirm(confirmst) )
+    if(confirm(confirmst))
     {
       document.getElementById("ldtxt").innerHTML = "Finalizing Order"; 
       document.getElementById("loadingGroup").style.display="block";
