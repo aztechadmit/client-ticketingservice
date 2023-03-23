@@ -201,7 +201,7 @@ body {
 }
 
 .addOnContainer{
-	opacity:1;
-	transition:opacity 0.4s;
+	scale:1 1;
+	transition:scale 0.4s;
 }
 
