@@ -435,14 +435,15 @@
    }
    function loadSumary() {
     
-    var ordSubtotal = ((1*adultPrice)+(1*childPrice))*numDay + 0;//addOnPrice
+    //var ordSubtotal = ((numAdult*adultPrice)+(numChild*childPrice))*numDay + addOnPrice;
+    var ordSubtotal = 200;
     
            var ordSumStr = "<b>"+ticketType+" Admission</b>";
                ordSumStr += "<p>Visiting on "+formatedDate+"</p><br>";
-               //ordSumStr = "<p>"+numAdult+" Adult @ $"+adultPrice+" each</p>";
-               //ordSumStr += "<p>"+numChild+" Child @ $"+childPrice+" each</p><br>";
+               ordSumStr = "<p>"+numAdult+" Adult @ $"+adultPrice+" each</p>";
+               ordSumStr += "<p>"+numChild+" Child @ $"+childPrice+" each</p><br>";
                ordSumStr += "<p>Visiting for "+numDay+" days</p>";
-               ordSumStr += "<p>Add-Ons: "+0+"</p>";//guestParking
+               ordSumStr += "<p>Add-Ons: "+guestParking+"</p>";
     
            document.getElementById("ordSum").innerHTML = ordSumStr;
            document.getElementById("ordSumTot").innerHTML = "Order Subtotal: $"+ordSubtotal;
