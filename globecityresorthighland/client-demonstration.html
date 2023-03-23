@@ -374,20 +374,20 @@
             addOnPrice = 24;
             document.getElementById("parkingDisplay").innerHTML = "One-Day General Parking ($24) added to order!";
             document.getElementById("remPar").style.display = "inline";
-            document.getElementById("parBtn").style.display = "none";
+            hideAddOn();
     }else if(partyp=="pri"){
             guestParking = "Priority Parking : $50";
             addOnPrice = 50;
             document.getElementById("parkingDisplay").innerHTML = "One-Day Priority Parking ($50) added to order!";
             document.getElementById("remPar").style.display = "inline";
-            document.getElementById("parBtn").style.display = "none";
+            hideAddOn();
     }
     else if(partyp=="ovs"){
             guestParking = "Over-size Parking : $29";
             addOnPrice = 29;
             document.getElementById("parkingDisplay").innerHTML = "One-Day Over-size Parking ($30) added to order!";
             document.getElementById("remPar").style.display = "inline";
-            document.getElementById("parBtn").style.display = "none";
+            hideAddOn();
     }
     else if(partyp=="rem"){
             guestParking = "none";
@@ -395,9 +395,13 @@
             document.getElementById("parkingDisplay").innerHTML = "";
             document.getElementById("remPar").style.display = "none";
             document.getElementById("parBtn").style.display = "inline";
+            document.getElementById("parBtn").style.opacity = 1;
     }
    }//endOfFunctionAddParking
-   
+   function hideAddOn() {
+    document.getElementById("parBtn").style.opacity = 0;
+    setTimeout(function(){ document.getElementById("parBtn").style.display = "none"; }, 400);
+   }
    function toSumFin(){
     loadSumary();
      initiateLoading(4000);
