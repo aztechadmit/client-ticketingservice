@@ -364,31 +364,34 @@
   
     
  <script> // go to checkout
+  
   var addOnPrice = 0;
+  var guestParking = "none";
+  
    function addParking(partyp){
     if(partyp=="gen"){
-            var guestParking = "General Parking : $24";
-            var addOnPrice = 24;
+            guestParking = "General Parking : $24";
+            addOnPrice = 24;
             document.getElementById("parkingDisplay").innerHTML = "One-Day General Parking ($24) added to order!";
             document.getElementById("remPar").style.display = "inline";
             document.getElementById("parBtn").style.display = "none";
     }else if(partyp=="pri"){
-            var guestParking = "Priority Parking : $50";
-            var addOnPrice = 50;
+            guestParking = "Priority Parking : $50";
+            addOnPrice = 50;
             document.getElementById("parkingDisplay").innerHTML = "One-Day Priority Parking ($50) added to order!";
             document.getElementById("remPar").style.display = "inline";
             document.getElementById("parBtn").style.display = "none";
     }
     else if(partyp=="ovs"){
-            var guestParking = "Over-size Parking : $29";
-            var addOnPrice = 29;
+            guestParking = "Over-size Parking : $29";
+            addOnPrice = 29;
             document.getElementById("parkingDisplay").innerHTML = "One-Day Over-size Parking ($30) added to order!";
             document.getElementById("remPar").style.display = "inline";
             document.getElementById("parBtn").style.display = "none";
     }
     else if(partyp=="rem"){
-            var guestParking = "none";
-            var addOnPrice = 0;
+            guestParking = "none";
+            addOnPrice = 0;
             document.getElementById("parkingDisplay").innerHTML = "";
             document.getElementById("remPar").style.display = "none";
             document.getElementById("parBtn").style.display = "inline";
@@ -422,6 +425,8 @@
      <br>
     <br> <button class="backButton" onclick="bktoPar();">Previous</button><button class="submitButton" onclick="finalCheckOut();">Next</button> <br>
     
+    <button class="submitButton" onclick="runVariableTest();">Run Variable Test</button>
+    
    </div>
    
   </div> <!-- end of order summary -->
@@ -454,7 +459,7 @@
        }
    function finalCheckOut(){
     
-    if( confirm("Are you sure you would like to continue?\nOnce the checkout process begins, you will not be able to edit your order.\n\nOrder Subtotal: $"+ordSubtotal))
+    if( confirm("Are you sure you would like to continue?\nOnce the checkout process begins, you will not be able to edit your order.\n\nOrder Subtotal: $"+"COULD NOT COLLECT"))
     {
       document.getElementById("loadingGroup").style.display="block";
       window.open("gc-portalConfirmation.html", "_self");
@@ -465,7 +470,26 @@
    }
   </script>
   
+  <script>
+   function runVariableTest(){
   
+   
+    alert("1 - ticketType: "+ticketType);
+    alert("2 - formatedDate: " + formatedDate);
+    
+    alert("3 - numDay: " + numDay);
+    
+    alert("4 - adultPrice: " + adultPrice);
+    alert("5 - childPrice: " + childPrice);
+    
+    alert("6 - numAdult: " + numAdult);
+    alert("7 - numChild: " + numChild);
+    
+    alert("8 - guestParking: " + guestParking);
+    alert("9 - addOnPrice: " + addOnPrice);
+    
+   }
+  </script>
   
   
   
