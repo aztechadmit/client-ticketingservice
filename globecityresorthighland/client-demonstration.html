@@ -313,7 +313,7 @@
             
              //document.getElementById("headerText").innerHTML = "<b>Order Summary</b><br><p>Ticket Type Selected: "+ticketType+" Admission</p>"+"<p>Date of Visit: "+formatedDate+"</p><p>Number of Days: "+numDay+"</p>"+ "<p>Number of Tickets: "+numAdult+" adult - "+numChild+" child</p>";
              
-             initiateLoading(10);
+             initiateLoading(1500);
              document.getElementById("addParWin").style.display="block";
              document.getElementById("numberTickets").style.display="none";
           
@@ -333,7 +333,7 @@
 
      <script>
        function BkToNumTik() {
-             initiateLoading(100);
+             initiateLoading(500);
              document.getElementById("numberTickets").style.display="block";
              document.getElementById("addParWin").style.display="none";
        }
@@ -389,7 +389,7 @@
    
    function toSumFin(){
     loadSumary();
-     initiateLoading(1500);
+     initiateLoading(4000);
              document.getElementById("addParWin").style.display="none";
              document.getElementById("loadSummaryFin").style.display="block";
    }
@@ -417,7 +417,7 @@
   
   <script>
    function bktoPar(){
-    initiateLoading(10);
+    initiateLoading(200);
     document.getElementById("addParWin").style.display="block";
              document.getElementById("loadSummaryFin").style.display="none";
     
