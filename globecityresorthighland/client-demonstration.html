@@ -447,9 +447,9 @@
    }
    function loadSumary() {
     
-    var ordSubtotal = ((numAdult*adultPrice)+(numChild*childPrice))*numDay + addOnPrice;
+    ordSubtotal = ((numAdult*adultPrice)+(numChild*childPrice))*numDay + addOnPrice;
     
-           var ordSumStr = "<b style='font-size:19px;'>"+ticketType+" Admission</b>";
+               ordSumStr = "<b style='font-size:19px;'>"+ticketType+" Admission</b>";
                ordSumStr += "<p>Visiting on "+"DATE"+"</p><br>";
                ordSumStr += "<p style='font-size:19px;'>"+numAdult+" Adult @ $"+adultPrice+" each</p>";
                ordSumStr += "<p style='font-size:19px;'>"+numChild+" Child @ $"+childPrice+" each</p><br>";
