@@ -440,6 +440,7 @@
   <script>
    function bktoPar(){
     initiateLoading(200);
+    document.getElementById("ldtxt").innerHTML = "Please Wait..."; 
     document.getElementById("addParWin").style.display="block";
              document.getElementById("loadSummaryFin").style.display="none";
     
@@ -462,6 +463,9 @@
              
     
        }
+  </script>
+  
+  <script>
    function finalCheckOut(){
     
     /* var confirmst = "Are you sure you would like to continue?";
