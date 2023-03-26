@@ -18,16 +18,30 @@ function runCheckout(summaryString, totalPrice, tikType, numDay, numAdult, numCh
 }//end function runCheckout
 
 function initiateChk() {
-	const queryString = window.location.search;
-	const urlParams = new URLSearchParams(queryString);
+	var queryString = window.location.search;
+	var urlParams = new URLSearchParams(queryString);
 	
-	const ordSubTtl = urlParams.get('sbTtl');
-	const ticketType = urlParams.get('tkTp');
+	ordSubTtl = urlParams.get('sbTtl');
+	ticketType = urlParams.get('tkTp');
 	
-	const numDays = urlParams.get('nmD');
-	const numAdult = urlParams.get('nmAd');
-	const numChild = urlParams.get('nmCh');
-	const dateVisit = urlParams.get('dtVs');
+	numDays = urlParams.get('nmD');
+	numAdult = urlParams.get('nmAd');
+	numChild = urlParams.get('nmCh');
+	
+	dateVisit = urlParams.get('dtVs');
+	
+	addOnPrice = urlParams.get('addOn');
+	
+	//Calculate Official Total
+	feeTaxTot = fees + (tax*ordSubTtl);
+	
+	orderTotal = ordSubTtl + feeTaxTot;
+	
+
+	
+	//Display Summary and Total
 	
 	document.getElementById('ordSmDis').innerHTML = "numDays: "+numDays+"<br>numAdult: "+numAdult+"<br>numChild: "+numChild+"<br>dateVisit: "+dateVisit+"<br>Order Subtotal: $"+ordSubTtl;
+	document.getElementById('taxNfeeDisp').innerHTML = "<p>Processing Fee: $"+fees+"</p><p>Sales Tax: $"+(tax*ordSubTtl)+"</p>";
+	document.getElementById('odTtDp').innerHTML = "<p style='font-size:20px;'>Order Total: <b>$" + orderTotal + "</b></p>";	
 }
