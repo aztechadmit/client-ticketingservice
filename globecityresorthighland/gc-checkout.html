@@ -15,12 +15,12 @@
     .container {  background-color:#efefef;color:black;    }
    .headerLogo {  height:35px;width:auto;margin:auto;margin-top:13px;   }
    .backButton {min-width:350px; border:2px solid black; }
-   header {	      background:rgba(7,3,157,0.9);   }
+   header {	      background:rgba(7,3,157,0.9);  height:auto; }
     .headImage {width:90%;height:auto;margin:auto;}
     
   </style>
   
- <header>  <img src="clientImages/gcResortLogoRemade.png" class="headerLogo"/> <p style="font-size:13px">Secure Checkout | <em>Powered by Az-Net Digital Security</em></p></header>
+ <header>  <img src="clientImages/gcResortLogoRemade.png" class="headerLogo"/> <p style="font-size:13px;color:white;"><b>Secure Checkout</b> | <em>Powered by Az-Net Digital Security</em></p></header>
  
  <div id="loadingGroup">
   <div class="loader" id="loader"></div>
@@ -63,8 +63,9 @@
         
         		</div><br>
 			
-			<div class='container'></div>
+			<div class='container'>
 			<button class="submitButton" onclick='window.open("gc-portalConfirmation.html", "_self");'>Finish Order</button>
+			</div>
 			
       <!-- window.open("gc-portalConfirmation.html", "_self"); -->
       
