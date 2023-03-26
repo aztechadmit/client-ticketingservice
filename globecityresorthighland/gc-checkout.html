@@ -9,7 +9,7 @@
  </head>
  
  <!-- Link to necessary scripts -->
-	
+	<script src="scripts/gc-checkout.js"></script>
   
   <style>
     .container {  background-color:#efefef;color:black;    }
@@ -47,9 +47,11 @@
 		<body style="text-align:center" onload="initiateLoading(4000);"> <!-- ------------------------------------------------------------------------------------ BODY -->
 			<div id="spacer" style="height:100px;display:block;"></div> <!-- moves body below the header -->
 			
-			<div class="container" onload="initiateChk();">
+			<div class="container">
 			<b style="font-size:20px;">Order Summary</b>
 				<p id="ordSmDis">Summary</p><br>
+				
+				<button class="submitButton" onclick='initiateChk();'>Check Pricing</button>
 				
 			<!-- <p>Thank you! A link to your Adventure Park tickets will be emailed to you shortly.<br></p> -->
 
@@ -93,6 +95,6 @@
 		</body> <!-- end of main body -->
 	</div> <!-- end of main body div -->
 	
-	<script src="scripts/gc-checkout.js"></script>
+	
   
 </html>
