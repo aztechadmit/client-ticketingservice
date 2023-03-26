@@ -1,0 +1,43 @@
+<html>
+  
+  <head> <!-- Basic HTML Page Setup -->
+    <title>Adventure Park Live | Press F11 to view full screen</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styleMain.css">
+    <link rel="icon" type="image/x-icon" href="../imageMain/webfavicon.ico">
+ </head>
+  
+   
+  <style>
+    
+    .container {  background-color:#efefef;color:black;    }
+   .headerLogo {  height:35px;width:auto;margin:auto;margin-top:13px;   }
+   .backButton {min-width:350px; border:2px solid black; }
+   header {	      background:rgba(7,3,157,0.9);  height:auto; }
+    .headImage {width:90%;height:auto;margin:auto;}
+    
+    .videoScreen {
+       
+    }
+    
+    #myVideo {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+    }
+    
+  </style>
+  
+  <header>  <img src="clientImages/gcResortLogoRemade.png" class="headerLogo"/> </header>
+  
+  <body>
+    <div class="videoScreen">
+    <video autoplay muted loop id="myVideo">
+       <source src="rain.mp4" type="video/mp4">
+    </video>
+    </div>
+  </body>
+  
+</html>
