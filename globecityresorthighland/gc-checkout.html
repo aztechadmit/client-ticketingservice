@@ -9,7 +9,7 @@
  </head>
  
  <!-- Link to necessary scripts -->
-  
+	
   
   <style>
     .container {  background-color:#efefef;color:black;    }
@@ -44,12 +44,12 @@
  </script>
   
 	<div id="bodyMain" class="bodyMain"> <!-- contains the entire body -->
-		<body style="text-align:center" onload="initiateLoading(7000);"> <!-- ------------------------------------------------------------------------------------ BODY -->
-			<div id="spacer" style="height:90px;display:block;"></div> <!-- moves body below the header -->
+		<body style="text-align:center" onload="initiateLoading(4000);"> <!-- ------------------------------------------------------------------------------------ BODY -->
+			<div id="spacer" style="height:100px;display:block;"></div> <!-- moves body below the header -->
 			
-			<div class="container">
+			<div class="container" onload="initiateChk();">
 			<b style="font-size:20px;">Order Summary</b>
-				<p>Thank you! Please <b>download your tickets below</b> or scan the QR code to download on a mobile device.<br></p>
+				<p id="ordSmDis">Summary</p><br>
 				
 			<!-- <p>Thank you! A link to your Adventure Park tickets will be emailed to you shortly.<br></p> -->
 
@@ -61,7 +61,7 @@
 			
 			
         
-        		</div><br>
+        		</div><br> <!-- end of header container (order summary) -->
 			
 			<div class='container'>
 			<button class="submitButton" onclick='window.open("gc-portalConfirmation.html", "_self");'>Finish Order</button>
@@ -92,5 +92,7 @@
 			
 		</body> <!-- end of main body -->
 	</div> <!-- end of main body div -->
+	
+	<script src="scripts/gc-checkout.js"></script>
   
 </html>
