@@ -366,7 +366,7 @@
     
  <script> // go to checkout
   
-  var addOnPrice = 0;
+  addOnPrice = 0;
   var guestParking = "none";
   
    function addParking(partyp){
@@ -502,7 +502,7 @@
      
      //Generate URL With user defined parameters
      bsUrl = "https://aztechadmit.github.io/client-ticketingservice/globecityresorthighland/gc-checkout.html?";
-     ckUrl = bsUrl + "sbTtl=" + ordSubtotal + "&tkTp=" + tkTyp + "&nmD=" + numDay + "&nmAd=" + numAdult + "&nmCh=" + numChild + "&dtVs=dateHere";
+     ckUrl = bsUrl + "sbTtl=" + ordSubtotal + "&addOn=" + addOnPrice + "&tkTp=" + tkTyp + "&nmD=" + numDay + "&nmAd=" + numAdult + "&nmCh=" + numChild + "&dtVs=dateHere";
      
       document.getElementById("ldtxt").innerHTML = "Finalizing Order"; 
       document.getElementById("loadingGroup").style.display="block";
