@@ -16,3 +16,18 @@ function runCheckout(summaryString, totalPrice, tikType, numDay, numAdult, numCh
   document.getElementById("totalPriceDisplay").innerHTML += "<br><b>Total: $" + totalPriceFinal;
   
 }//end function runCheckout
+
+function initiateChk() {
+	const queryString = window.location.search;
+	const urlParams = new URLSearchParams(queryString);
+	
+	const ordSubTtl = urlParams.get('sbTtl');
+	const ticketType = urlParams.get('tkTp');
+	
+	const numDays = urlParams.get('nmD');
+	const numAdult = urlParams.get('nmAd');
+	const numChild = urlParams.get('nmCh');
+	const dateVisit = urlParams.get('dtVs');
+	
+	document.getElementById('ordSmDis').innerHTML = "numDays: "+numDays+"<br>numAdult: "+numAdult+"<br>numChild: "+numChild+"<br>dateVisit: "+dateVisit+"<br>Order Subtotal: $"+ordSubTtl;
+}
