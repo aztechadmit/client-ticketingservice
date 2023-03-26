@@ -430,6 +430,7 @@
     
      <br>
     <br> <button class="backButton" onclick="bktoPar();">Previous</button><button class="submitButton" onclick="finalCheckOut();">Next</button> <br>
+    <button class='backButton' onclick="runVariableTest()">Run Variable Test</button> <br>
     
    <!-- <button class="submitButton" onclick="runVariableTest();">Run Variable Test</button> -->
     
@@ -477,25 +478,27 @@
     
     if(confirm("Are you sure you would like to continue?\n\nOnce Checkout begins, you will not be able to edit your order."))
     {
-      
+     
+     var tkTyp = "none";
+     
      switch ticketType {
       case "Oras Nou Resident":
-       var tkTyp = "onres";
+       tkTyp = "onres";
        break;
       case "General":
-       var tkTyp = "gen";
+       tkTyp = "gen";
        break;
       case "VIP Bronze":
-       var tkTyp = "vpbrnz";
+       tkTyp = "vpbrnz";
        break;
       case "VIP Gold":
-       var tkTyp = "vpgld";
+       tkTyp = "vpgld";
        break;
       case "VIP Silver":
-       var tkTyp = "vpsilv";
+       tkTyp = "vpsilv";
        break;
       case "VIP Deluxe":
-       var tkTyp = "vpdel";
+       tkTyp = "vpdel";
      }//end of switch statement
      
      //Generate URL With user defined parameters
@@ -528,7 +531,7 @@
   
    
     alert("1 - ticketType: "+ticketType);
-    alert("2 - formatedDate: " + "BROKEN");
+    alert("2 - formatedDate: " + formatedDate);
     
     alert("3 - numDay: " + numDay);
     
