@@ -474,9 +474,29 @@
     if(confirm("Are you sure you would like to continue?\n\nOnce Checkout begins, you will not be able to edit your order."))
     {
       
+     switch ticketType {
+      case "Oras Nou Resident":
+       var tkTyp = "onres";
+       break;
+      case "General":
+       var tkTyp = "gen";
+       break;
+      case "VIP Bronze":
+       var tkTyp = "vpbrnz";
+       break;
+      case "VIP Gold":
+       var tkTyp = "vpgld";
+       break;
+      case "VIP Silver":
+       var tkTyp = "vpsilv";
+       break;
+      case "VIP Deluxe":
+       var tkTyp = "vpdel";
+     }//end of switch statement
+     
      //Generate URL With user defined parameters
      const bsUrl = "https://aztechadmit.github.io/client-ticketingservice/globecityresorthighland/gc-checkout.html?";
-     const ckUrl = bsUrl + "sbTtl=" + ordSubtotal + "&tkTp=" + ticketType + "&nmD=" + numDay + "&nmAd=" + numAdult + "&nmCh=" + numChild + "&dtVs=dateHere";
+     const ckUrl = bsUrl + "sbTtl=" + ordSubtotal + "&tkTp=" + tkTyp + "&nmD=" + numDay + "&nmAd=" + numAdult + "&nmCh=" + numChild + "&dtVs=dateHere";
      
       document.getElementById("ldtxt").innerHTML = "Finalizing Order"; 
       document.getElementById("loadingGroup").style.display="block";
