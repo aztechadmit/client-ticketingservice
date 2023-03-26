@@ -1,9 +1,10 @@
+<!DOCTYPE html>
 <html>
-	
-	<head> /* Basic HTML Page Setup */
+
+<head> <!-- Basic HTML Page Setup -->
 	<title>Resort Information | Globe-City Resort Highland</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="../styleMain.css">
+	<!-- <link rel="stylesheet" href="../styleMain.css"> -->
 	</head>
 
 	<style>
@@ -12,25 +13,76 @@
 			color:black;
 			background:white;
 			max-width:1200px;
+            font-family:arial;
+            text-align:center;
+            display:block;
 		}
 		
 		h1 {
 			font-size:22px;
 			color:#073763;
 			font-weight:bold;
+            text-align:left;
 		}
 		
 		.textBlock {
 			display:inline-block;
-			min-width:30%;
-			margin:10px;
-			padding:5px;
+			margin:auto;
+			padding:20px;
+            margin-left:20px;
+            text-align:left;
+            margin-top:0;
+            position:relative;
+            vertical-align: top;
 		}
 		
 	</style>
 	
 	<body>
-		<div class="lineBreak"></div>
+    	<h1 style="text-align:center">Today's Operating Hours</h1>
+        <div class="textBlock" style="width:200px;text-align:center;margin:0px;padding:5px;">
+        <b>Adventure Park</b>
+        	<p>10AM - 10PM</p>
+        </div>
+        <div class="textBlock" style="width:200px;text-align:center;margin:0px;padding:5px;">
+        <b>City-Shop</b>
+          <p>10AM - 10PM</p>
+        </div><br>
+        
+        
+    <div class="lineBreak"></div><br>
+    
+            <div class="textBlock">
+        	<h1>Attraction Closures</h1>
+            <p id="closures">
+            	• Journey to Atlantis<br>
+                • Your Mom's House
+            </p>
+           	
+       		</div>
+    
+		<div class="textBlock">
+        	<h1>Parking Information</h1>
+            <p>• Adventure Parking Lot: <span style="color:green" id="apStat">Lots of Space</span></p>
+            <p>• City-Shop Parking: <span style="color:red" id="csStat">Closed</span></p>
+            <p>• Current Parking Rates: <span>$15 - $25</span></p>
+        </div>
+        
+        
+        <div class="textBlock">
+        	<h1>Crowd Levels</h1>
+            <p>• Adventure Park: <span style="color:green" id="apStat">Standard</span></p>
+            <p>• City-Shop: <span style="color:red" id="csStat">Busy</span></p>
+           	
+        </div>
+        <br>
+    <div class="lineBreak"></div>
+    	<br>
+        
+    	<h1 style="text-align:center;">Today's Entertainment Schedule</h1>
+        No Shows Today
+        
+        
 	</body>
-	
+
 </html>
