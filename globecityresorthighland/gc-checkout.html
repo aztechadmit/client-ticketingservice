@@ -17,7 +17,12 @@
    .backButton {min-width:350px; border:2px solid black; }
    header {	      background:rgba(7,3,157,0.9);  height:auto; }
     .headImage {width:90%;height:auto;margin:auto;}
-    
+
+    .txtin {
+		height:50px;
+		font-size:18px;
+	}
+	
   </style>
   
  <header>  <img src="clientImages/gcResortLogoRemade.png" class="headerLogo"/> <p style="font-size:13px;color:white;"><b>Secure Checkout</b> | <em>Powered by Az-Net Digital Security</em></p></header>
@@ -63,35 +68,35 @@
 			
 			<div id='odTtDp'></div><br>
         
-        		</div><br> <!-- end of header container (order summary) -->
+        		</div> <!-- end of header container (order summary) -->
 			
 			<br>
 			
 			<div class='container'> <!-- Guest Information -->
-				<br><label>Contact Information</label><br>
+				<br><label>Contact Information</label><br><br>
 				<div style='width:100%'></div>
 
 				<div style="display:inline-block">
 					<label for="fname">First Name</label>
-					<input type="text" id="fname" style="width:160px;">
+					<input type="text" id="fname" style="width:160px;" class="txtin">
 					&nbsp;&nbsp;&nbsp;
 				</div>
 				
 				<div style="display:inline-block">
 					<label for="lname">Last Name</label>
-					<input type="text" id="lname" style="width:160px;">
+					<input type="text" id="lname" style="width:160px;" class="txtin">
 				</div>
 
 				<br><br>
 
 				<label for='gmail'>Email Address</label>
-				<input type="email" style="width:300px" id="emailIn">
+				<input type="email" style="width:300px" id="emailIn" class="txtin">
 
-				<br>
+				<br><br>
 				<input type="checkbox" id="ckPromoEmail" checked><label for="ckPromoEmail">Sign me up to recieve promotional emails from the Globe-City Resort Highland</label>
-				<br>
+				<br><br>
 				<input type="checkbox" id="iApprove"><label for="iApprove">I agree to the Aztech Admit <a hrer="index.html">Terms and Conditions</a></label>
-				<br>
+				<br><br>
 
 			</div> <!-- end of guest information -->
 			

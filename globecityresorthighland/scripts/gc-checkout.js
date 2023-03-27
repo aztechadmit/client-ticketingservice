@@ -1,5 +1,5 @@
-const fees = 1.50; //Fees in dollars
-const tax = 0.0; //Taxes in percentage with least being 0.00 and 5% being 0.05
+fees = 1.50; //Fees in dollars
+tax = 0.0; //Taxes in percentage with least being 0.00 and 5% being 0.05
 
 //Make sure the following elements exist:
 	//TEXT - id="summaryDisplay"
@@ -21,7 +21,7 @@ function initiateChk() {
 	var queryString = window.location.search;
 	var urlParams = new URLSearchParams(queryString);
 	
-	ordSubTtl = urlParams.get('sbTtl');
+	ordSubTtl = Number(urlParams.get('sbTtl'));
 	ticketType = urlParams.get('tkTp');
 	
 	numDays = urlParams.get('nmD');
@@ -33,7 +33,7 @@ function initiateChk() {
 	addOnPrice = urlParams.get('addOn');
 	
 	//Calculate Official Total
-	feeTaxTot = fees + (tax*ordSubTtl);
+	feeTaxTot = Number(fees + (Number(tax)*ordSubTtl));
 	
 	orderTotal = ordSubTtl + feeTaxTot;
 	
