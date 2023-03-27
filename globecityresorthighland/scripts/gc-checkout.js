@@ -1,5 +1,5 @@
-fees = 1.50; //Fees in dollars
-tax = 0.0; //Taxes in percentage with least being 0.00 and 5% being 0.05
+fees = 1.5; //Fees in dollars
+tax = 0; //Taxes in percentage with least being 0.00 and 5% being 0.05
 
 //Make sure the following elements exist:
 	//TEXT - id="summaryDisplay"
@@ -41,6 +41,6 @@ function initiateChk() {
 	//Display Summary and Total
 	
 	document.getElementById('ordSmDis').innerHTML = "numDays: "+numDays+"<br>numAdult: "+numAdult+"<br>numChild: "+numChild+"<br>dateVisit: "+dateVisit+"<br>Order Subtotal: $"+ordSubTtl;
-	document.getElementById('taxNfeeDisp').innerHTML = "<p>Processing Fee: $"+fees+"</p><p>Sales Tax: $"+(tax*ordSubTtl)+"</p>";
+	document.getElementById('taxNfeeDisp').innerHTML = "<p>Processing Fee: $"+fees+"</p><p>Sales Tax: $"+Number(tax*ordSubTtl)+"</p>";
 	document.getElementById('odTtDp').innerHTML = "<p style='font-size:20px;'>Order Total: <b>$" + orderTotal + "</b></p>";	
 }
