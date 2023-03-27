@@ -36,11 +36,33 @@ function initiateChk() {
 	feeTaxTot = Number(fees) + (Number(tax)*Number(ordSubTtl));
 	orderTotal = Number(ordSubTtl) + Number(feeTaxTot);
 	
-
+	//Get tkTypD value
+	switch(ticketType){
+		case 'onres':
+			tkTypD = 'Oras Nou Resident';
+			break;
+		case 'gen':
+			tkTypD = 'General';
+			break;
+		case 'vpbrnz':
+			tkTypD = 'VIP Bronze';
+			break;
+		case 'vpgld':
+			tkTypeD = 'VIP Gold';
+			break;
+		case 'vpsilv':
+			tkTypD = 'VIP Silver';
+			break;
+		case 'vpdel':
+			tkTypD = 'VIP Deluxe';
+			break;
+		default:
+			tkTypeD = 'None Selected';
+	}//end of switch
 	
 	//Display Summary and Total
 	
-	document.getElementById('ordSmDis').innerHTML = "numDays: "+numDays+"<br>numAdult: "+numAdult+"<br>numChild: "+numChild+"<br>dateVisit: "+dateVisit+"<br>Order Subtotal: $"+ordSubTtl;
+	document.getElementById('ordSmDis').innerHTML = "<p>"+tkTypD+" Admission</p><p>Date of Visit: "+dateVisit+"</p><p>Number of Days: "+numDays+"</p><p>Adult Tickets: "+numAdult+", Child Tickets: "+numChild+"</p><p>Add Ons: $"+addOnPrice+"</p><p>Order Subtotal: <b>$"+ordSubTtl+"</b></br>";
 	document.getElementById('taxNfeeDisp').innerHTML = "<p>Processing Fee: $"+fees+"</p><p>Sales Tax: $"+Number(tax*ordSubTtl)+"</p>";
 	document.getElementById('odTtDp').innerHTML = "<p style='font-size:20px;'>Order Total: <b>$" + orderTotal + "</b></p>";	
 }
