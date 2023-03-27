@@ -33,9 +33,8 @@ function initiateChk() {
 	addOnPrice = urlParams.get('addOn');
 	
 	//Calculate Official Total
-	feeTaxTot = Number(fees + (Number(tax)*ordSubTtl));
-	
-	orderTotal = ordSubTtl + feeTaxTot;
+	feeTaxTot = Number(fees) + (Number(tax)*Number(ordSubTtl));
+	orderTotal = Number(ordSubTtl) + Number(feeTaxTot);
 	
 
 	
