@@ -17,6 +17,7 @@
    .backButton {min-width:350px; border:2px solid black; }
    header {	      background:rgba(7,3,157,0.9);  height:auto; }
     .headImage {width:90%;height:auto;margin:auto;}
+	  .submitButton {background:#07309D;color:white;}
 
 	
   </style>
@@ -26,7 +27,7 @@
  <div id="loadingGroup">
   <div class="loader" id="loader"></div>
   <div class="cover" id="cover"></div>
-  <p class="loadingText" style="text-align:center;">Creating Your Tickets</p>
+  <p class="loadingText" style="text-align:center;">Preparing Checkout</p>
  </div>
   
 <script> // Loading Animation control
@@ -99,12 +100,18 @@
 			<br>
 
 			<div class='container'>
-			<button class="submitButton" onclick='window.open("gc-portalConfirmation.html", "_self");'>Finish Order</button>
+			<button class="submitButton" onclick='submitOrder();'>Finish Order</button>
 			</div>
 			
       <!-- window.open("gc-portalConfirmation.html", "_self"); -->
       
-      
+      			<script> //SUBMIT ORDER
+				function submitOrder() {
+					document.getElementById("loadingGroup").style.display="block";
+					document.getElementById("loadingText").innerHTML = "Submiting Order";
+					window.open("gc-portalConfirmation.html", "_self");
+				}
+			</script>
       
 			
 			<!-- \/  Bottom of Page elements  \/ -->
